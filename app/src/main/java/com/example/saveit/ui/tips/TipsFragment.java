@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,13 +24,21 @@ public class TipsFragment extends Fragment {
         tipsViewModel =
                 new ViewModelProvider(this).get(TipsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_tips, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
+        final TextView textView = root.findViewById(R.id.text_tips);
+
         tipsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
+
+
+        //String url = "http://www.example.com";
+        //WebView view = (WebView) getView().findViewById(R.id.tipsWebview);
+        //view.loadUrl(url);
+
         return root;
+
     }
 }

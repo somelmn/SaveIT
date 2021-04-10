@@ -12,7 +12,7 @@
         android:title="@string/title_dashboard" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_tips"
         android:icon="@android:drawable/star_big_off"
         android:title="@string/title_tips" />
 
