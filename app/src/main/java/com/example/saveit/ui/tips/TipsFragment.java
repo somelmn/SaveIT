@@ -29,7 +29,7 @@ public class TipsFragment extends Fragment {
         View tipsView = inflater.inflate(R.layout.fragment_tips, container, false);
 
         WebView webView = tipsView.findViewById(R.id.tipsWebView);
-        webView.loadUrl("https://www.ase.org/blog");
+        webView.loadUrl("https://blogsaveit.vercel.app/");
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient(){
