@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.example.saveit.ui.tips.TipsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment= new HomeFragment();
                         break;
                     case 3:
-                        fragment= new InfoFragment();
+                        fragment= new TipsFragment();
                         break;
 
                 }
@@ -66,18 +67,18 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
             @Override
             public void onClickItem(MeowBottomNavigation.Model item) {
-                Toast.makeText(getApplicationContext()
+                /* Toast.makeText(getApplicationContext()
                         ,"You Clicked" + item.getId()
-                        ,Toast.LENGTH_SHORT).show();
+                        ,Toast.LENGTH_SHORT).show(); */
             }
         });
 
         bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
             @Override
             public void onReselectItem(MeowBottomNavigation.Model item) {
-                Toast.makeText(getApplicationContext()
+               /*  Toast.makeText(getApplicationContext()
                 ,"You Reselected" + item.getId()
-                ,Toast.LENGTH_SHORT).show();
+                ,Toast.LENGTH_SHORT).show(); */
             }
         });
 
