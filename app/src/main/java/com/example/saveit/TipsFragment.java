@@ -1,4 +1,4 @@
-package com.example.saveit.ui.tips;
+package com.example.saveit;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +20,6 @@ import com.example.saveit.R;
 
 public class TipsFragment extends Fragment {
 
-    private TipsViewModel tipsViewModel;
     private WebView webView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,

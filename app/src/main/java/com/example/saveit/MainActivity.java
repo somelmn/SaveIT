@@ -7,20 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
-import com.example.saveit.ui.tips.TipsFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -49,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment= null;
                 switch (item.getId()){
                     case 1:
-                        fragment= new NotificationFragment();
+                        fragment= new DashboardFragment();
                         break;
                     case 2:
                         fragment= new HomeFragment();
