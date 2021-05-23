@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -23,6 +24,7 @@ import androidx.navigation.ui.NavigationUI;
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
+    TextView tname;
 
 
     @Override
@@ -30,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         drawerLayout= findViewById(R.id.drawer_layout);
+
+        tname= findViewById(R.id.text_name);
+        String x= getIntent().getStringExtra("name");
+        tname.setText(x);
+
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_notification));
         bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_home2));

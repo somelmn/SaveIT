@@ -12,9 +12,9 @@
         android:onClick="ClickLogo"
         android:src="@drawable/ic_saveit"/>
     <TextView
+        android:id="@+id/text_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Android Coding"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textAlignment="center"

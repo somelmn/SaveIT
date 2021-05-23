@@ -23,14 +23,7 @@
           android:gravity="center"/>
 
    </LinearLayout>
-      <RelativeLayout
-          android:layout_width="300dp"
-          android:layout_height="match_parent"
-          android:layout_gravity="start"
-          android:background="@android:color/white">
-         <include
-             layout="@layout/main_nav_drawer"/>
-      </RelativeLayout>
+
 
    <LinearLayout
        android:layout_width="match_parent"
@@ -54,7 +47,14 @@
       app:mbn_backgroundBottomColor="#3c415e"/>
    </LinearLayout>
 
-
+   <RelativeLayout
+       android:layout_width="300dp"
+       android:layout_height="match_parent"
+       android:layout_gravity="start"
+       android:background="@android:color/white">
+      <include
+          layout="@layout/main_nav_drawer"/>
+   </RelativeLayout>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
