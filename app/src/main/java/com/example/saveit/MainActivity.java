@@ -6,33 +6,28 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
-
-import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    private TextView register;
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+
+public class MainActivity extends AppCompatActivity{
+
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
-    TextView tname;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        register = (TextView) findViewById(R.id.register);
-        register.setOnClickListener(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         drawerLayout= findViewById(R.id.drawer_layout);
 
-        tname= findViewById(R.id.text_name);
-        String x= getIntent().getStringExtra("name");
-        tname.setText(x);
+
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_notification));
@@ -148,12 +143,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.register:
-                startActivity(new Intent(this, Register.class));
-                break;
-        }
-    }
+
 }

@@ -1,18 +1,16 @@
 package com.example.saveit;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,9 +22,10 @@ import org.jetbrains.annotations.NotNull;
 
 
 public class Register extends AppCompatActivity implements View.OnClickListener{
-    private TextView registerUser;
+    private TextView registerUser, loginUser;
     private EditText editTextFullName, editTextEmail, editTextPassword, editTextuserName;
     private FirebaseAuth mAuth;
+
 
 
     @Override
@@ -36,6 +35,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         mAuth = FirebaseAuth.getInstance();
         registerUser = (Button) findViewById(R.id.register);
         registerUser.setOnClickListener(this);
+        loginUser = (Button) findViewById(R.id.login);
+        loginUser.setOnClickListener(this);
         editTextFullName = (EditText) findViewById(R.id.name);
         editTextuserName = (EditText) findViewById(R.id.username);
         editTextEmail = (EditText) findViewById(R.id.email);
@@ -47,6 +48,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch(v.getId()){
+            case R.id.login:
+                startActivity(new Intent(this, Login.class));
+                break;
             case R.id.register:
                 registerUser();
 
