@@ -32,6 +32,9 @@ public class AboutUs extends AppCompatActivity {
         recreate();
 
     }
+    public void ClickSettings(View view){
+        MainActivity.redirectActivity( this,Preference.class);
+    }
     public void ClickLogout(View view){
         MainActivity.logout(this);
     }

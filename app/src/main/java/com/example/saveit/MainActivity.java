@@ -107,9 +107,10 @@ public class MainActivity extends AppCompatActivity{
     public void ClickAboutUs(View view){
         redirectActivity( this,AboutUs.class);
     }
-    public void ClickLogout(View view){
-        logout(this);
+    public void ClickSettings(View view){
+        redirectActivity( this,Preference.class);
     }
+    public void ClickLogout(View view){ logout(this); }
 
     public static void logout(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);

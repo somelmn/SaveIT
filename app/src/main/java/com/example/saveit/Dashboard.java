@@ -47,6 +47,9 @@ public class Dashboard extends AppCompatActivity {
     public void ClickAboutUs(View view){
         MainActivity.redirectActivity(this,AboutUs.class);
     }
+    public void ClickSettings(View view){
+        MainActivity.redirectActivity( this,Preference.class);
+    }
     public void ClickLogout(View view){
         MainActivity.logout(this);
     }
