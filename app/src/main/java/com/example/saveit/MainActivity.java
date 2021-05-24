@@ -15,7 +15,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    private TextView register;
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
     TextView tname;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        register = (TextView) findViewById(R.id.register);
+        register.setOnClickListener(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         drawerLayout= findViewById(R.id.drawer_layout);
@@ -143,5 +146,14 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         closeDrawer(drawerLayout);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.register:
+                startActivity(new Intent(this, Register.class));
+                break;
+        }
     }
 }
