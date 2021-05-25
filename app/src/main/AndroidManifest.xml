@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SaveIT">
-        <activity android:name=".AboutUs"></activity>
+        <activity android:name=".forgotPassword"></activity>
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".AboutUs" />
         <activity android:name=".Dashboard" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />

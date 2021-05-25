@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 import org.jetbrains.annotations.NotNull;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
-    private TextView register,loginUser;
+    private TextView register,loginUser, forgotPassword;
     private EditText editTextEmail, editTextPassword;
     private FirebaseAuth mAuth;
 
@@ -32,7 +32,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        register = (Button) findViewById(R.id.register);
+        register = (TextView) findViewById(R.id.register);
         register.setOnClickListener( this);
 
         loginUser= (Button) findViewById(R.id.login);
@@ -41,6 +41,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.password);
         mAuth = FirebaseAuth.getInstance();
+        forgotPassword = (TextView) findViewById(R.id.forgotPassword);
+        forgotPassword.setOnClickListener( this);
+        
+
+        
+
+
 
 
     }
@@ -53,6 +60,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.login:
                 loginUser();
+                break;
+            case R.id.forgotPassword:
+                startActivity(new Intent(this, forgotPassword.class));
                 break;
 
 
