@@ -12,7 +12,7 @@
         android:onClick="ClickLogo"
         android:src="@drawable/ic_saveit"/>
     <TextView
-        android:id="@+id/text_name"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
@@ -25,6 +25,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:background="#636363"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

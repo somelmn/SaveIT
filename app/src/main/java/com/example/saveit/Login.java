@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -91,8 +92,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            startActivity(new Intent(Login.this, MainActivity.class));
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            if(user.isEmailVerified()){
 
+
+                            startActivity(new Intent(Login.this, MainActivity.class));
+                        }else{
+                                user.sendEmailVerification();
+                                Toast.makeText(Login.this,"Check your email to verify your account", Toast.LENGTH_LONG).show();
+                            }
                         }else{
                             Toast.makeText(Login.this, "Failed to login! Please check your credentials", Toast.LENGTH_LONG).show();
                         }

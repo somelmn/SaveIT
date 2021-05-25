@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">SaveIT!</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -15,4 +15,6 @@
     <string name="title_tips">Tips</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enable_night_mode">Enable Night Mode</string>
+    <string name="night_mode" tools:ignore="DuplicateDefinition">Night Mode</string>
 </resources>
