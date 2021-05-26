@@ -6,19 +6,29 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="match_parent"
+        android:id="@+id/nav_pic"
+        android:layout_width="wrap_content"
         android:layout_height="120dp"
         android:layout_margin="16dp"
         android:onClick="ClickLogo"
-        android:src="@drawable/ic_saveit"/>
+        android:src="@drawable/user" />
+
     <TextView
         android:id="@+id/nav_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
         android:textAlignment="center"
-        android:textColor="#636363"/>
+        android:textColor="#636363"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/nav_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="#636363"
+        android:textSize="13sp"
+        android:textStyle="italic" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

@@ -4,9 +4,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +32,8 @@ public class MainActivity extends AppCompatActivity{
 
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
-    TextView tname;
+    TextView tname,temail;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +44,10 @@ public class MainActivity extends AppCompatActivity{
         drawerLayout= findViewById(R.id.drawer_layout);
 
         tname= findViewById(R.id.nav_name);
+        temail= findViewById(R.id.nav_email);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getEmail();
+        temail.setText(uid);
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
         reference.orderByChild("email").equalTo(uid).addValueEventListener(new ValueEventListener() {
             @Override
@@ -109,7 +117,23 @@ public class MainActivity extends AppCompatActivity{
                 .replace(R.id.frame_layout,fragment)
                 .commit();
     }
+    public void ClickMore(View view){
+        PopupMenu pm = new PopupMenu(MainActivity.this, view);
+        pm.getMenuInflater().inflate(R.menu.more, pm.getMenu());
+        pm.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.item1:
+                        ClickLogout(view);
+                        return true;
 
+                }
+
+                return true;
+            }
+        });
+        pm.show(); }
     public void ClickMenu(View view){
         openDrawer(drawerLayout);
   }

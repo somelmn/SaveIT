@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SaveIT">
-        <activity android:name=".forgotPassword"></activity>
-        <activity android:name=".ForgotPassword" />
+        <activity android:name=".forgotPassword"/>
         <activity android:name=".AboutUs" />
         <activity android:name=".Dashboard" />
+        <activity android:name=".Preference" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
         <activity
