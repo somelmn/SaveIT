@@ -1,21 +1,13 @@
 package com.example.saveit;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.PopupMenu;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,19 +18,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity{
-
+public class Bills extends AppCompatActivity {
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
     TextView tname,temail;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_bills);
         drawerLayout= findViewById(R.id.drawer_layout);
 
         tname= findViewById(R.id.nav_name);
@@ -60,7 +48,6 @@ public class MainActivity extends AppCompatActivity{
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_usage));
@@ -86,7 +73,7 @@ public class MainActivity extends AppCompatActivity{
                 loadFragment(fragment);
             }
         });
-        bottomNavigation.show(2,true);
+
         bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
             @Override
             public void onClickItem(MeowBottomNavigation.Model item) {
@@ -105,95 +92,41 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-
     }
-
     private void loadFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_layout,fragment)
                 .commit();
     }
-    public void ClickMore(View view){
-        PopupMenu pm = new PopupMenu(MainActivity.this, view);
-        pm.getMenuInflater().inflate(R.menu.more, pm.getMenu());
-        pm.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.item1:
-                        ClickLogout(view);
-                        return true;
-
-                }
-
-                return true;
-            }
-        });
-        pm.show(); }
     public void ClickMenu(View view){
-        openDrawer(drawerLayout);
-  }
-  public static void openDrawer(DrawerLayout drawerLayout){
-        drawerLayout.openDrawer(GravityCompat.START);
+        MainActivity.openDrawer(drawerLayout);
     }
+
     public void ClickLogo(View view){
-        closeDrawer(drawerLayout);
-    }
-    public static void closeDrawer(DrawerLayout drawerLayout){
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }
+        MainActivity.closeDrawer(drawerLayout);
     }
     public void ClickHome(View view){
-        recreate();
+        MainActivity.redirectActivity(this,MainActivity.class);
     }
     public void ClickDashboard(View view){
-
-        redirectActivity( this,Dashboard.class);
-    }
-    public void ClickBills(View view){
-        redirectActivity( this,Bills.class);
+        MainActivity.redirectActivity(this,Dashboard.class);
     }
     public void ClickAboutUs(View view){
-        redirectActivity( this,AboutUs.class);
+        recreate();
+
     }
     public void ClickSettings(View view){
-        redirectActivity( this,Preference.class);
+        MainActivity.redirectActivity( this,Preference.class);
     }
-    public void ClickLogout(View view){ logout(this); }
-
-    public static void logout(Activity activity) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle("Logout");
-        builder.setMessage("Are you sure you want to logout?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                activity.finishAffinity();
-                System.exit(0);
-            }
-        });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        builder.show();
+    public void ClickLogout(View view){
+        MainActivity.logout(this);
     }
 
-    public static void redirectActivity(Activity activity, Class aClass) {
-        Intent intent = new Intent(activity,aClass);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        activity.startActivity(intent);
-
-    }
+    @Override
     protected void onPause(){
         super.onPause();
-        closeDrawer(drawerLayout);
-
+        MainActivity.closeDrawer(drawerLayout);
     }
-
 
 }
