@@ -58,7 +58,7 @@
                 android:layout_width="172dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="120dp"
-                android:onClick="ClickLogo"
+                android:onClick="ClickElectricity"
                 android:src="@drawable/electricity2" />
             <TextView
                 android:layout_width="122dp"
@@ -66,6 +66,7 @@
                 android:layout_marginLeft="130dp"
                 android:layout_marginTop="130dp"
                 android:text="Electricity"
+                android:onClick="ClickElectricity"
                 android:textSize="25sp"
                 android:textColor="@color/black"/>
 
@@ -74,13 +75,13 @@
                 android:layout_height="53dp"
                 android:layout_marginLeft="220dp"
                 android:layout_marginTop="122dp"
-                android:onClick="ClickLogo"
+                android:onClick="ClickElectricity"
                 android:src="@drawable/ic_baseline_arrow_forward_24" />
             <ImageView
                 android:layout_width="172dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="210dp"
-                android:onClick="ClickLogo"
+                android:onClick="ClickWater"
                 android:src="@drawable/water" />
             <TextView
                 android:layout_width="122dp"
@@ -88,6 +89,7 @@
                 android:layout_marginLeft="130dp"
                 android:layout_marginTop="220dp"
                 android:text="Water"
+                android:onClick="ClickWater"
                 android:textSize="25sp"
                 android:textColor="@color/black"/>
             <ImageView
@@ -95,14 +97,14 @@
                 android:layout_height="53dp"
                 android:layout_marginLeft="220dp"
                 android:layout_marginTop="210dp"
-                android:onClick="ClickLogo"
+                android:onClick="ClickWater"
                 android:src="@drawable/ic_baseline_arrow_forward_24"
                 android:contentDescription="TODO" />
             <ImageView
                 android:layout_width="172dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="300dp"
-                android:onClick="ClickLogo"
+                android:onClick="ClickGas"
                 android:src="@drawable/gas2" />
             <TextView
                 android:layout_width="122dp"
@@ -110,6 +112,7 @@
                 android:layout_marginLeft="130dp"
                 android:layout_marginTop="320dp"
                 android:text="Gas"
+                android:onClick="ClickGas"
                 android:textSize="25sp"
                 android:textColor="@color/black"/>
             <ImageView
@@ -117,8 +120,18 @@
                 android:layout_height="53dp"
                 android:layout_marginLeft="220dp"
                 android:layout_marginTop="310dp"
-                android:onClick="ClickLogo"
+                android:onClick="ClickGas"
                 android:src="@drawable/ic_baseline_arrow_forward_24" />
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="50dp"
+                android:text="Pay Bılls"
+                android:textStyle="bold"
+                android:textSize="23dp"
+                android:layout_marginTop="450dp"
+                app:icon="@drawable/ic_arrows"
+            />
         </FrameLayout>
 
     </LinearLayout>

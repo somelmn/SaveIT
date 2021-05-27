@@ -62,8 +62,8 @@ public class AboutUs extends AppCompatActivity {
     public void ClickHome(View view){
         MainActivity.redirectActivity(this,MainActivity.class);
     }
-    public void ClickDashboard(View view){
-        MainActivity.redirectActivity(this,Dashboard.class);
+    public void ClickBills(View view){
+        MainActivity.redirectActivity(this,Bills.class);
     }
     public void ClickAboutUs(View view){
         recreate();

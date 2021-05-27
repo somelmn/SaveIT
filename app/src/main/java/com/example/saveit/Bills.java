@@ -52,6 +52,16 @@ public class Bills extends AppCompatActivity {
         });
 
     }
+    public void ClickElectricity(View view){
+        MainActivity.redirectActivity(this,ElectricityBill.class);
+    }
+    public void ClickWater(View view){
+        MainActivity.redirectActivity(this,WaterBill.class);
+    }
+    public void ClickGas(View view){
+        MainActivity.redirectActivity(this,GasBill.class);
+    }
+
     public void ClickMenu(View view){
         MainActivity.openDrawer(drawerLayout);
     }
@@ -62,11 +72,11 @@ public class Bills extends AppCompatActivity {
     public void ClickHome(View view){
         MainActivity.redirectActivity(this,MainActivity.class);
     }
-    public void ClickDashboard(View view){
-        MainActivity.redirectActivity(this,Dashboard.class);
+    public void ClickBills(View view){
+        recreate();
     }
     public void ClickAboutUs(View view){
-        recreate();
+        MainActivity.redirectActivity(this,AboutUs.class);
 
     }
     public void ClickSettings(View view){
