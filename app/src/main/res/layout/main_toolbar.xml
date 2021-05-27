@@ -27,7 +27,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="ClickMore"
-        android:src="@drawable/ic_more_white"/>
+        android:onClick="ClickHome"
+        android:src="@drawable/ic_home_white"/>
 
 </LinearLayout>

@@ -72,7 +72,7 @@
             <ImageView
                 android:layout_width="153dp"
                 android:layout_height="53dp"
-                android:layout_marginLeft="210dp"
+                android:layout_marginLeft="220dp"
                 android:layout_marginTop="122dp"
                 android:onClick="ClickLogo"
                 android:src="@drawable/ic_baseline_arrow_forward_24" />
@@ -93,10 +93,11 @@
             <ImageView
                 android:layout_width="153dp"
                 android:layout_height="53dp"
-                android:layout_marginLeft="210dp"
+                android:layout_marginLeft="220dp"
                 android:layout_marginTop="210dp"
                 android:onClick="ClickLogo"
-                android:src="@drawable/ic_baseline_arrow_forward_24" />
+                android:src="@drawable/ic_baseline_arrow_forward_24"
+                android:contentDescription="TODO" />
             <ImageView
                 android:layout_width="172dp"
                 android:layout_height="60dp"
@@ -114,22 +115,12 @@
             <ImageView
                 android:layout_width="153dp"
                 android:layout_height="53dp"
-                android:layout_marginLeft="210dp"
+                android:layout_marginLeft="220dp"
                 android:layout_marginTop="310dp"
                 android:onClick="ClickLogo"
                 android:src="@drawable/ic_baseline_arrow_forward_24" />
         </FrameLayout>
 
-        <com.etebarian.meowbottomnavigation.MeowBottomNavigation
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/bottom_navigation"
-            app:mbn_circleColor="@color/white"
-            app:mbn_selectedIconColor="#3c415e"
-            app:mbn_countTextColor="@color/white"
-            app:mbn_countBackgroundColor="#ff6f00"
-            app:mbn_defaultIconColor="@color/white"
-            app:mbn_backgroundBottomColor="#3c415e"/>
     </LinearLayout>
 
     <RelativeLayout
