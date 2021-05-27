@@ -3,16 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer_layout"
     tools:context=".AboutUs">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-
         <include
             layout="@layout/main_toolbar"/>
         <TextView
@@ -22,6 +21,30 @@
             android:textSize="50sp"
             android:textStyle="bold"
             android:gravity="center"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/frame_layout"/>
+
+        <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottom_navigation"
+            app:mbn_circleColor="@color/white"
+            app:mbn_selectedIconColor="#3c415e"
+            app:mbn_countTextColor="@color/white"
+            app:mbn_countBackgroundColor="#ff6f00"
+            app:mbn_defaultIconColor="@color/white"
+            app:mbn_backgroundBottomColor="#3c415e"/>
     </LinearLayout>
 
     <RelativeLayout
@@ -31,9 +54,7 @@
         android:background="@android:color/white">
         <include
             layout="@layout/main_nav_drawer"/>
-
     </RelativeLayout>
-
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

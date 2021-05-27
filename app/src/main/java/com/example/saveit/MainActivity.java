@@ -8,10 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -65,9 +63,9 @@ public class MainActivity extends AppCompatActivity{
 
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
-        bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_notification));
+        bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.ic_usage));
         bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.ic_home2));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.ic_info2));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.ic_shop));
 
         bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
             @Override
@@ -78,10 +76,10 @@ public class MainActivity extends AppCompatActivity{
                         fragment= new DashboardFragment();
                         break;
                     case 2:
-                        fragment= new HomeFragment();
+                        fragment= new TipsFragment();
                         break;
                     case 3:
-                        fragment= new TipsFragment();
+                        fragment= new HomeFragment();
                         break;
 
                 }
