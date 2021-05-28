@@ -64,9 +64,11 @@
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="130dp"
-                android:layout_marginTop="130dp"
+                android:layout_marginTop="135dp"
                 android:text="Electricity"
                 android:onClick="ClickElectricity"
+                android:fontFamily="@font/abhaya_libre"
+                android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black"/>
 
@@ -87,9 +89,11 @@
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="130dp"
-                android:layout_marginTop="220dp"
+                android:layout_marginTop="225dp"
                 android:text="Water"
                 android:onClick="ClickWater"
+                android:fontFamily="@font/abhaya_libre"
+                android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black"/>
             <ImageView
@@ -110,9 +114,11 @@
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="130dp"
-                android:layout_marginTop="320dp"
+                android:layout_marginTop="325dp"
                 android:text="Gas"
                 android:onClick="ClickGas"
+                android:fontFamily="@font/abhaya_libre"
+                android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black"/>
             <ImageView
