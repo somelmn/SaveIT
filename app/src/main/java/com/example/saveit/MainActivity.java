@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity{
                         fragment= new TipsFragment();
                         break;
                     case 3:
-                        fragment= new HomeFragment();
+                        fragment= new ShopFragment();
                         break;
 
                 }

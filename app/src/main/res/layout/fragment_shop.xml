@@ -33,7 +33,7 @@
         tools:context=".TipsFragment">
 
         <WebView
-            android:id="@+id/tipsWebView"
+            android:id="@+id/shopWebView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
