@@ -14,16 +14,33 @@
         android:orientation="vertical">
         <include
             layout="@layout/main_toolbar"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Gas Bill"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
-
+            android:layout_marginTop="-600dp"
+            android:fontFamily="@font/abhaya_libre"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:text="Gas Bills"
+            android:textColor="@color/grey"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/today_date"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-1280dp"
+            android:layout_marginLeft="290dp"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold" />
     </LinearLayout>
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_marginTop="120dp"
+        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,6 +51,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:id="@+id/frame_layout"/>
+
 
 
     </LinearLayout>

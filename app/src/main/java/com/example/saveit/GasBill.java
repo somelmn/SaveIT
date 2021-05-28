@@ -3,6 +3,8 @@ package com.example.saveit;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +22,11 @@ import com.google.firebase.database.ValueEventListener;
 public class GasBill extends AppCompatActivity {
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
-    TextView tname,temail;
+    TextView tname,temail,today;
+    String s1[], s2[];
+    int images[] ={R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,
+            R.drawable.bills,R.drawable.bills,R.drawable.bills};
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,15 @@ public class GasBill extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+
+        recyclerView=findViewById(R.id.recycler_view);
+
+        s1=getResources().getStringArray(R.array.electricity_bills);
+        s2=getResources().getStringArray(R.array.electricity_bills_description);
+
+        RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s1,s2,images);
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     public void ClickElectricity(View view){
