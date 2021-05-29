@@ -33,21 +33,21 @@
         <item>November</item>
         <item>December</item>
     </string-array>
-
+    
     <string-array name="electricity_bills_description">
         <item> </item>
-        <item>15.01.2021</item>
-        <item>15.02.2021</item>
-        <item>15.03.2021</item>
-        <item>15.04.2021</item>
-        <item>15.05.2021</item>
-        <item>15.06.2021</item>
-        <item>15.07.2021</item>
-        <item>15.08.2021</item>
-        <item>15.09.2021</item>
-        <item>15.10.2021</item>
-        <item>15.11.2021</item>
-        <item>15.12.2021</item>
+        <item>01.01.2021</item>
+        <item>01.02.2021</item>
+        <item>01.03.2021</item>
+        <item>01.04.2021</item>
+        <item>01.05.2021</item>
+        <item>01.06.2021</item>
+        <item>01.07.2021</item>
+        <item>01.08.2021</item>
+        <item>01.09.2021</item>
+        <item>01.10.2021</item>
+        <item>01.11.2021</item>
+        <item>01.12.2021</item>
     </string-array>
 
     <string-array name="electricity_bills_cost">
@@ -65,21 +65,37 @@
         <item>320 tl</item>
         <item>390 tl</item>
     </string-array>
-
-    <string-array name="electricity_bills_paid">
+    <string-array name="water_bills_cost">
         <item> </item>
-        <item>Paid</item>
-        <item>Paid</item>
-        <item>Paid</item>
-        <item>Paid</item>
-        <item>Paid</item>
-        <item>Not Paid</item>
-        <item>Not Paid</item>
-        <item>Not Paid</item>
-        <item>Not Paid</item>
-        <item>Not Paid</item>
-        <item>Not Paid</item>
-        <item>Not Paid</item>
+        <item>200 tl</item>
+        <item>200 tl</item>
+        <item>150 tl</item>
+        <item>100 tl</item>
+        <item>250 tl</item>
+        <item>350 tl</item>
+        <item>230 tl</item>
+        <item>120 tl</item>
+        <item>200 tl</item>
+        <item>270 tl</item>
+        <item>120 tl</item>
+        <item>290 tl</item>
+    </string-array>
+    <string-array name="gas_bills_cost">
+        <item> </item>
+        <item>400 tl</item>
+        <item>300 tl</item>
+        <item>250 tl</item>
+        <item>400 tl</item>
+        <item>250 tl</item>
+        <item>350 tl</item>
+        <item>430 tl</item>
+        <item>520 tl</item>
+        <item>500 tl</item>
+        <item>470 tl</item>
+        <item>320 tl</item>
+        <item>290 tl</item>
     </string-array>
 
+
+    
 </resources>

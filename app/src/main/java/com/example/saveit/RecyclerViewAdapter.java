@@ -16,17 +16,17 @@ import org.jetbrains.annotations.NotNull;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
     String data1[], data2[],data3[];
-    int img[];
+    int img[],pay[];
     Context context;
 
 
-    public RecyclerViewAdapter(Context ct, String s1[], String s2[],String s3[], int images[]){
+    public RecyclerViewAdapter(Context ct, String s1[], String s2[],String s3[], int images[],int paid[]){
         context=ct;
         data1=s1;
         data2=s2;
         data3=s3;
         img=images;
-
+        pay=paid;
     }
     @NonNull
     @NotNull
@@ -44,6 +44,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.myText2.setText(data2[position]);
         holder.myText3.setText(data3[position]);
         holder.myImage.setImageResource(img[position]);
+        holder.payImage.setImageResource(pay[position]);
 
     }
 
@@ -54,13 +55,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView myText1,myText2,myText3;
-        ImageView myImage;
+        ImageView myImage,payImage;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             myText1=itemView.findViewById(R.id.bills);
             myText2=itemView.findViewById(R.id.desc);
             myText3=itemView.findViewById(R.id.cost);
             myImage=itemView.findViewById(R.id.myimage);
+            payImage=itemView.findViewById(R.id.paid);
         }
     }
 }

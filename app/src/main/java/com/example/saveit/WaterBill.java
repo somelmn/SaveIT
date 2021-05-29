@@ -33,6 +33,8 @@ public class WaterBill extends AppCompatActivity implements AdapterView.OnItemSe
     String s1[], s2[],s3[],s4[],s5[],s6[];
     int images[] ={R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,
             R.drawable.bills,R.drawable.bills,R.drawable.bills};
+    int paid[] ={R.drawable.tick,R.drawable.tick,R.drawable.tick,R.drawable.tick,R.drawable.tick,R.drawable.tick,R.drawable.tick,R.drawable.tick,R.drawable.tick,
+            R.drawable.tick,R.drawable.tick,R.drawable.tick};
     RecyclerView recyclerView;
 
     @Override
@@ -71,7 +73,7 @@ public class WaterBill extends AppCompatActivity implements AdapterView.OnItemSe
 
         s1=getResources().getStringArray(R.array.electricity_bills);
         s2=getResources().getStringArray(R.array.electricity_bills_description);
-        s5=getResources().getStringArray(R.array.electricity_bills_cost);
+        s5=getResources().getStringArray(R.array.water_bills_cost);
 
         Spinner dropdown = findViewById(R.id.spinner);
         dropdown.setOnItemSelectedListener(this);
@@ -95,7 +97,7 @@ public class WaterBill extends AppCompatActivity implements AdapterView.OnItemSe
             String[] news1 = Arrays.copyOfRange(s1, 1, month+1);
             String[] news2 = Arrays.copyOfRange(s2, 1, month+1);
             String[] news3 = Arrays.copyOfRange(s5, 1, month+1);
-            RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,news1,news2,news3,images);
+            RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,news1,news2,news3,images,paid);
             recyclerView.setAdapter(myAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         }else{
@@ -106,18 +108,19 @@ public class WaterBill extends AppCompatActivity implements AdapterView.OnItemSe
 
             if(position>month){
                 s6 = new String[]{"No Bill"};
+                paid=new int[]{R.drawable.cross};
+            }else{
+                paid=new int[]{R.drawable.tick};
+            }
 
-            }else{ }
-
-            RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s3,s4,s6,images);
+            RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s3,s4,s6,images,paid);
             recyclerView.setAdapter(myAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         } }
 
-
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s1,s2,s5,images);
+        RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s1,s2,s5,images,paid);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
