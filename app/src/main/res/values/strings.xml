@@ -33,7 +33,7 @@
         <item>November</item>
         <item>December</item>
     </string-array>
-    
+
     <string-array name="electricity_bills_description">
         <item> </item>
         <item>15.01.2021</item>
@@ -81,5 +81,5 @@
         <item>Not Paid</item>
         <item>Not Paid</item>
     </string-array>
-    
+
 </resources>

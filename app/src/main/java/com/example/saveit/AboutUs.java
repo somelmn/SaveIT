@@ -1,13 +1,12 @@
 package com.example.saveit;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.firebase.auth.FirebaseAuth;
@@ -64,6 +63,9 @@ public class AboutUs extends AppCompatActivity {
     }
     public void ClickBills(View view){
         MainActivity.redirectActivity(this,Bills.class);
+    }
+    public void ClickSavings(View view){
+        MainActivity.redirectActivity( this,Savings.class);
     }
     public void ClickAboutUs(View view){
         recreate();

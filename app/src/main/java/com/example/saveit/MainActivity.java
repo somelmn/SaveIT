@@ -154,6 +154,9 @@ public class MainActivity extends AppCompatActivity{
     public void ClickBills(View view){
         redirectActivity( this,Bills.class);
     }
+    public void ClickSavings(View view){
+        redirectActivity( this,Savings.class);
+    }
     public void ClickAboutUs(View view){
         redirectActivity( this,AboutUs.class);
     }

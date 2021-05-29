@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
@@ -15,18 +14,11 @@
         <include
             layout="@layout/main_toolbar"/>
 
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
         <FrameLayout
+            android:id="@+id/frame_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:id="@+id/frame_layout">
+            android:layout_weight="1">
 
             <View
                 android:layout_width="match_parent"
@@ -41,12 +33,14 @@
                 android:layout_marginTop="190dp"
                 android:layout_marginBottom="16dp"
                 android:background="@color/black" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="280dp"
                 android:layout_marginBottom="16dp"
                 android:background="@color/black" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -60,17 +54,18 @@
                 android:layout_marginTop="120dp"
                 android:onClick="ClickElectricity"
                 android:src="@drawable/electricity2" />
+
             <TextView
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="130dp"
                 android:layout_marginTop="135dp"
-                android:text="Electricity"
-                android:onClick="ClickElectricity"
                 android:fontFamily="@font/abhaya_libre"
-                android:textStyle="bold"
+                android:onClick="ClickElectricity"
+                android:text="Electricity"
+                android:textColor="@color/black"
                 android:textSize="25sp"
-                android:textColor="@color/black"/>
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="153dp"
@@ -79,48 +74,54 @@
                 android:layout_marginTop="122dp"
                 android:onClick="ClickElectricity"
                 android:src="@drawable/ic_baseline_arrow_forward_24" />
+
             <ImageView
                 android:layout_width="172dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="210dp"
                 android:onClick="ClickWater"
                 android:src="@drawable/water" />
+
             <TextView
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="130dp"
                 android:layout_marginTop="225dp"
-                android:text="Water"
-                android:onClick="ClickWater"
                 android:fontFamily="@font/abhaya_libre"
-                android:textStyle="bold"
+                android:onClick="ClickWater"
+                android:text="Water"
+                android:textColor="@color/black"
                 android:textSize="25sp"
-                android:textColor="@color/black"/>
+                android:textStyle="bold" />
+
             <ImageView
                 android:layout_width="153dp"
                 android:layout_height="53dp"
                 android:layout_marginLeft="220dp"
                 android:layout_marginTop="210dp"
+                android:contentDescription="TODO"
                 android:onClick="ClickWater"
-                android:src="@drawable/ic_baseline_arrow_forward_24"
-                android:contentDescription="TODO" />
+                android:src="@drawable/ic_baseline_arrow_forward_24" />
+
             <ImageView
                 android:layout_width="172dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="300dp"
                 android:onClick="ClickGas"
                 android:src="@drawable/gas2" />
+
             <TextView
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="130dp"
                 android:layout_marginTop="325dp"
-                android:text="Gas"
-                android:onClick="ClickGas"
                 android:fontFamily="@font/abhaya_libre"
-                android:textStyle="bold"
+                android:onClick="ClickGas"
+                android:text="Gas"
+                android:textColor="@color/black"
                 android:textSize="25sp"
-                android:textColor="@color/black"/>
+                android:textStyle="bold" />
+
             <ImageView
                 android:layout_width="153dp"
                 android:layout_height="53dp"
@@ -130,6 +131,14 @@
                 android:src="@drawable/ic_baseline_arrow_forward_24" />
 
         </FrameLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     </LinearLayout>
 
