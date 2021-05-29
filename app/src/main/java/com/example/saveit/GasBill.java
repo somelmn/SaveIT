@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -19,11 +22,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class GasBill extends AppCompatActivity {
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Arrays;
+import java.util.Date;
+
+public class GasBill extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     DrawerLayout drawerLayout;
-    MeowBottomNavigation bottomNavigation;
     TextView tname,temail,today;
-    String s1[], s2[];
+    String s1[], s2[],s3[],s4[],s5[],s6[];
     int images[] ={R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,
             R.drawable.bills,R.drawable.bills,R.drawable.bills};
     RecyclerView recyclerView;
@@ -33,6 +40,10 @@ public class GasBill extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gas_bill);
         drawerLayout = findViewById(R.id.drawer_layout);
+
+        today= findViewById(R.id.today_date);
+        String date= LocalDate.now().toString();
+        today.setText(date);
 
         tname = findViewById(R.id.nav_name);
         temail = findViewById(R.id.nav_email);
@@ -60,8 +71,50 @@ public class GasBill extends AppCompatActivity {
 
         s1=getResources().getStringArray(R.array.electricity_bills);
         s2=getResources().getStringArray(R.array.electricity_bills_description);
+        s5=getResources().getStringArray(R.array.electricity_bills_cost);
 
-        RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s1,s2,images);
+        Spinner dropdown = findViewById(R.id.spinner1);
+        dropdown.setOnItemSelectedListener(this);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, s1);
+        dropdown.setAdapter(adapter);
+    }
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String item = parent.getItemAtPosition(position).toString();
+
+
+        Date date = new Date();
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int month = localDate.getMonthValue();
+
+
+        if(item.equals("Select Month")){
+            String[] news1 = Arrays.copyOfRange(s1, 1, month+1);
+            String[] news2 = Arrays.copyOfRange(s2, 1, month+1);
+            String[] news3 = Arrays.copyOfRange(s5, 1, month+1);
+            RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,news1,news2,news3,images);
+            recyclerView.setAdapter(myAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        }else{
+
+            s3 = new String[]{s1[position]};
+            s4=  new String[]{s2[position]};
+            s6=  new String[]{s5[position]};
+
+            if(position>month){
+                s6 = new String[]{"No Bill"};
+
+            }else{ }
+
+            RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s3,s4,s6,images);
+            recyclerView.setAdapter(myAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        } }
+
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s1,s2,s5,images);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

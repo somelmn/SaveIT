@@ -128,16 +128,7 @@
                 android:layout_marginTop="310dp"
                 android:onClick="ClickGas"
                 android:src="@drawable/ic_baseline_arrow_forward_24" />
-            <Button
-                android:layout_width="300dp"
-                android:layout_height="70dp"
-                android:layout_marginLeft="50dp"
-                android:text="Pay Bılls"
-                android:textStyle="bold"
-                android:textSize="23dp"
-                android:layout_marginTop="450dp"
-                app:icon="@drawable/ic_arrows"
-            />
+
         </FrameLayout>
 
     </LinearLayout>

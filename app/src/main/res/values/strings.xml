@@ -19,6 +19,7 @@
     <string name="night_mode" tools:ignore="DuplicateDefinition">Night Mode</string>
 
     <string-array name="electricity_bills">
+        <item>Select Month</item>
         <item>January</item>
         <item>February</item>
         <item>March</item>
@@ -34,6 +35,7 @@
     </string-array>
     
     <string-array name="electricity_bills_description">
+        <item> </item>
         <item>15.01.2021</item>
         <item>15.02.2021</item>
         <item>15.03.2021</item>
@@ -46,6 +48,38 @@
         <item>15.10.2021</item>
         <item>15.11.2021</item>
         <item>15.12.2021</item>
+    </string-array>
+
+    <string-array name="electricity_bills_cost">
+        <item> </item>
+        <item>300 tl</item>
+        <item>400 tl</item>
+        <item>350 tl</item>
+        <item>400 tl</item>
+        <item>250 tl</item>
+        <item>350 tl</item>
+        <item>330 tl</item>
+        <item>420 tl</item>
+        <item>400 tl</item>
+        <item>370 tl</item>
+        <item>320 tl</item>
+        <item>390 tl</item>
+    </string-array>
+
+    <string-array name="electricity_bills_paid">
+        <item> </item>
+        <item>Paid</item>
+        <item>Paid</item>
+        <item>Paid</item>
+        <item>Paid</item>
+        <item>Paid</item>
+        <item>Not Paid</item>
+        <item>Not Paid</item>
+        <item>Not Paid</item>
+        <item>Not Paid</item>
+        <item>Not Paid</item>
+        <item>Not Paid</item>
+        <item>Not Paid</item>
     </string-array>
     
 </resources>
