@@ -1,33 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DashboardFragment">
 
-    <com.jjoe64.graphview.GraphView
-        android:id="@+id/graph"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dip"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/sendbutton"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="sendMessage"
-        android:text="Add Data"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.943"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/graph"
-        app:layout_constraintVertical_bias="0.037" />
+        android:orientation="vertical">
+        <include
+            layout="@layout/main_toolbar"/>
+
+        <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/black" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="220dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/black" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="440dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/black" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="675dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/black" />
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/electricity3" />
+            <Button
+                android:layout_width="153dp"
+                android:layout_height="53dp"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="90dp"
+                android:text="Electricity"
+                android:id="@+id/electricity"/>
+
+
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="270dp"
+                android:src="@drawable/water2" />
+
+            <Button
+                android:layout_width="153dp"
+                android:layout_height="53dp"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="310dp"
+                android:text="Electricity"
+                android:id="@+id/Water"/>
+
+
+
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="510dp"
+                android:src="@drawable/gas3"/>
+
+            <Button
+                android:layout_width="153dp"
+                android:layout_height="53dp"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="535dp"
+                android:text="Electricity"
+                android:id="@+id/Gas"/>
+
+
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white">
+        <include
+            layout="@layout/main_nav_drawer"/>
+    </RelativeLayout>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
