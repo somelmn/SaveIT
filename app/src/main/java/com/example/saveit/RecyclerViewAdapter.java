@@ -1,12 +1,14 @@
 package com.example.saveit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,8 +18,11 @@ import org.jetbrains.annotations.NotNull;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
     String data1[], data2[],data3[];
-    int img[],pay[];
+    int img[],pay[],img_bill[];
     Context context;
+    Button btn;
+    int[] bill ={R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,
+            R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150};
 
 
     public RecyclerViewAdapter(Context ct, String s1[], String s2[],String s3[], int images[],int paid[]){
@@ -46,6 +51,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.myImage.setImageResource(img[position]);
         holder.payImage.setImageResource(pay[position]);
 
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(),data2[position],Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(context,BillClicked.class);
+                intent.putExtra("bill_img", bill[position]);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -55,7 +71,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView myText1,myText2,myText3;
-        ImageView myImage,payImage;
+        ImageView myImage,payImage,billImage;
+
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             myText1=itemView.findViewById(R.id.bills);
@@ -63,6 +80,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             myText3=itemView.findViewById(R.id.cost);
             myImage=itemView.findViewById(R.id.myimage);
             payImage=itemView.findViewById(R.id.paid);
+            btn=(Button)itemView.findViewById(R.id.button);
+
         }
     }
 }

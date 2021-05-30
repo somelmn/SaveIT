@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SaveIT">
-        <activity android:name=".Savings"></activity>
+        <activity android:name=".BillClicked"/>
+        <activity android:name=".Savings" />
         <activity android:name=".GasBill" />
         <activity android:name=".WaterBill" />
         <activity android:name=".ElectricityBill" />
