@@ -14,7 +14,9 @@
         android:orientation="vertical">
         <include
             layout="@layout/main_toolbar"/>
-        <com.jjoe64.graphview.GraphView
+
+
+        <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/graph"
             android:layout_width="match_parent"
             android:layout_height="200dip"
@@ -22,7 +24,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <Button
             android:id="@+id/sendbutton"

@@ -1,16 +1,19 @@
 package com.example.saveit;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -18,17 +21,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.helper.StaticLabelsFormatter;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.time.LocalDate;
-import java.util.Random;
+import java.util.ArrayList;
 
 public class ElectricityUsage extends AppCompatActivity {
     DrawerLayout drawerLayout;
-    MeowBottomNavigation bottomNavigation;
     TextView tname,temail;
 
 
@@ -59,34 +56,28 @@ public class ElectricityUsage extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-        Button button = findViewById(R.id.sendbutton);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast
-                        .makeText(ElectricityUsage.this, LocalDate.now().toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        BarChart barChart = findViewById(R.id.graph);
+        ArrayList<BarEntry> visitors = new ArrayList<>();
+        visitors.add(new BarEntry(2014,50));
+        visitors.add(new BarEntry(2015,89));
+        visitors.add(new BarEntry(2016,150));
+        visitors.add(new BarEntry(2017,69));
+        visitors.add(new BarEntry(2018,98));
+        visitors.add(new BarEntry(2019,33));
+        visitors.add(new BarEntry(2020,154));
 
-        String day = LocalDate.now().getDayOfWeek().name();
+        BarDataSet barDataSet = new BarDataSet(visitors, "Visitors");
+        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        barDataSet.setValueTextColor(Color.BLACK);
+        barDataSet.setValueTextSize(16f);
 
+        BarData barData = new BarData(barDataSet);
+        barChart.setFitBars(true);
+        barChart.setData(barData);
+        barChart.getDescription().setText("Energy Usage per day!");
+        barChart.animateY(2000);
 
-        GraphView graph = (GraphView) findViewById(R.id.graph);
-
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
-                new DataPoint(0, getDailyUsage()),
-                new DataPoint(1, getDailyUsage()),
-                new DataPoint(2, getDailyUsage()),
-                new DataPoint(3, getDailyUsage()),
-                new DataPoint(4, getDailyUsage())
-        });
-
-        graph.addSeries(series);
-
-        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
-        staticLabelsFormatter.setHorizontalLabels(new String[] {dayEarlier(4),dayEarlier(3),dayEarlier(2),dayEarlier(1),dayEarlier(0)});
-        graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
 
     }
     public void ClickMenu(View view){
@@ -122,20 +113,6 @@ public class ElectricityUsage extends AppCompatActivity {
         MainActivity.closeDrawer(drawerLayout);
     }
 
-    public double getDailyUsage() {
-        double rangeMin = 6.3;
-        double rangeMax = 10.3;
-
-        Random r = new Random();
-        double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
-        return randomValue;
-    }
-
-    public String dayEarlier(int i) {
-        String day = LocalDate.now().getDayOfWeek().minus(i).name().substring(0, 3);
-
-        return day;
-    }
 
 
 }
