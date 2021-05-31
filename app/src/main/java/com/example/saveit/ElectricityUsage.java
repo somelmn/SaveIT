@@ -10,9 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,6 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ElectricityUsage extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -57,29 +62,47 @@ public class ElectricityUsage extends AppCompatActivity {
             }
         });
 
+
         BarChart barChart = findViewById(R.id.graph);
-        ArrayList<BarEntry> visitors = new ArrayList<>();
-        visitors.add(new BarEntry(2014,50));
-        visitors.add(new BarEntry(2015,89));
-        visitors.add(new BarEntry(2016,150));
-        visitors.add(new BarEntry(2017,69));
-        visitors.add(new BarEntry(2018,98));
-        visitors.add(new BarEntry(2019,33));
-        visitors.add(new BarEntry(2020,154));
 
-        BarDataSet barDataSet = new BarDataSet(visitors, "Visitors");
-        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-        barDataSet.setValueTextColor(Color.BLACK);
-        barDataSet.setValueTextSize(16f);
+        ArrayList<IBarDataSet> dataSets = new ArrayList<>();
+        List<String> xAxisValues = new ArrayList<>(Arrays.asList("Mon", "Tue", "Wed", "Thu", "Fri", "Sat","Sun"));
+        List<BarEntry> usageEntries = getUsageEntries();
 
-        BarData barData = new BarData(barDataSet);
+        dataSets = new ArrayList<>();
+        BarDataSet set1;
+
+        set1 = new BarDataSet(usageEntries, "Energy Usage");
+        set1.setColors(ColorTemplate.MATERIAL_COLORS);
+        set1.setValueTextColor(Color.BLACK);
+        set1.setValueTextSize(16f);
+        dataSets.add(set1);
+
+
+        //String setter in x-Axis
+        barChart.getXAxis().setValueFormatter(new com.github.mikephil.charting.formatter.IndexAxisValueFormatter(xAxisValues));
+
+        BarData data = new BarData(dataSets);
+        barChart.setData(data);
         barChart.setFitBars(true);
-        barChart.setData(barData);
         barChart.getDescription().setText("Energy Usage per day!");
         barChart.animateY(2000);
-
-
     }
+
+    private List<BarEntry> getUsageEntries() {
+        ArrayList<BarEntry> energyUsage = new ArrayList<>();
+
+        energyUsage.add(new BarEntry(0,50));
+        energyUsage.add(new BarEntry(1,89));
+        energyUsage.add(new BarEntry(2,150));
+        energyUsage.add(new BarEntry(3,69));
+        energyUsage.add(new BarEntry(4,98));
+        energyUsage.add(new BarEntry(5,33));
+        energyUsage.add(new BarEntry(6,154));
+
+        return energyUsage.subList(0, 7);
+    }
+
     public void ClickMenu(View view){
         MainActivity.openDrawer(drawerLayout);
     }
