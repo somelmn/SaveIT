@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SaveIT">
-        <activity android:name=".GasUsage"></activity>
+        <activity android:name=".Settings"></activity>
+        <activity android:name=".GasUsage" />
         <activity android:name=".WaterUsage" />
         <activity android:name=".ElectricityUsage" />
         <activity android:name=".BillClicked" />
@@ -23,7 +24,6 @@
         <activity android:name=".forgotPassword" />
         <activity android:name=".AboutUs" />
         <activity android:name=".Dashboard" />
-        <activity android:name=".Preference" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
         <activity

@@ -124,7 +124,7 @@ public class ElectricityUsage extends AppCompatActivity {
 
     }
     public void ClickSettings(View view){
-        MainActivity.redirectActivity( this,Preference.class);
+        MainActivity.redirectActivity( this,Settings.class);
     }
     public void ClickLogout(View view){
         MainActivity.logout(this);

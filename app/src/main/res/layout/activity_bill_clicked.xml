@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".BillClicked">
 
+
     <ImageView
         android:id="@+id/billImage"
         android:layout_width="wrap_content"

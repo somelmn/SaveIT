@@ -17,21 +17,27 @@ import org.jetbrains.annotations.NotNull;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
+    String bill_type;
     String data1[], data2[],data3[];
-    int img[],pay[],img_bill[];
+    int img[],pay[];
     Context context;
     Button btn;
-    int[] bill ={R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,
+    int[] bill_electricity ={R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,
             R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150};
+    int[] bill_water={R.drawable.water,R.drawable.water,R.drawable.water,R.drawable.water,R.drawable.water,R.drawable.water,R.drawable.water,R.drawable.water,R.drawable.water,
+            R.drawable.water,R.drawable.water,R.drawable.water};
+    int[] bill_gas={R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,
+            R.drawable.gas2,R.drawable.gas2};
 
 
-    public RecyclerViewAdapter(Context ct, String s1[], String s2[],String s3[], int images[],int paid[]){
+    public RecyclerViewAdapter(Context ct, String s1[], String s2[],String s3[], int images[],int paid[], String type){
         context=ct;
         data1=s1;
         data2=s2;
         data3=s3;
         img=images;
         pay=paid;
+        bill_type=type;
     }
     @NonNull
     @NotNull
@@ -52,13 +58,32 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.payImage.setImageResource(pay[position]);
 
 
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),data2[position],Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(context,BillClicked.class);
-                intent.putExtra("bill_img", bill[position]);
-                context.startActivity(intent);
+
+                if(bill_type.equals("Electricity Bills")){
+                    Toast.makeText(view.getContext(),data2[position],Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(context,BillClicked.class);
+                    intent.putExtra("bill_type",bill_type);
+                    intent.putExtra("bill_img", bill_electricity[position]);
+                    context.startActivity(intent);
+                }
+                else if(bill_type.equals("Gas Bills")){
+                    Toast.makeText(view.getContext(),data2[position],Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(context,BillClicked.class);
+                    intent.putExtra("bill_type",bill_type);
+                    intent.putExtra("bill_img", bill_gas[position]);
+                    context.startActivity(intent);
+                }else{
+                    Toast.makeText(view.getContext(),data2[position],Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(context,BillClicked.class);
+                    intent.putExtra("bill_type",bill_type);
+                    intent.putExtra("bill_img", bill_water[position]);
+                    context.startActivity(intent);
+                }
+
             }
         });
 

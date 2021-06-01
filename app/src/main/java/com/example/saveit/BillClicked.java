@@ -10,6 +10,7 @@ import android.widget.Toast;
 public class BillClicked extends AppCompatActivity {
     ImageView imageView;
     int billImage;
+    String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class BillClicked extends AppCompatActivity {
     }
     public void getData(){
         if(getIntent().hasExtra("bill_img")){
+            type=getIntent().getStringExtra("bill_type");
             billImage=getIntent().getIntExtra("bill_img",1);
 
         }else{

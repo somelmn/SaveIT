@@ -36,7 +36,8 @@ import java.util.List;
 
 public class ElectricityBill extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     DrawerLayout drawerLayout;
-    TextView tname,temail,today;
+    TextView tname,temail,today,type;
+    String billtype;
     String s1[], s2[],s3[],s4[],s5[],s6[],s7[];
     int images[] ={R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,
             R.drawable.bills,R.drawable.bills,R.drawable.bills};
@@ -53,6 +54,9 @@ public class ElectricityBill extends AppCompatActivity implements AdapterView.On
         today = findViewById(R.id.today_date);
         String date = LocalDate.now().toString();
         today.setText(date);
+
+        type=findViewById(R.id.type);
+        billtype= type.getText().toString();
 
         tname = findViewById(R.id.nav_name);
         temail = findViewById(R.id.nav_email);
@@ -107,7 +111,7 @@ public class ElectricityBill extends AppCompatActivity implements AdapterView.On
             String[] news2 = Arrays.copyOfRange(s2, 1, month+1);
             String[] news3 = Arrays.copyOfRange(s5, 1, month+1);
 
-            RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,news1,news2,news3,images,paid);
+            RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,news1,news2,news3,images,paid,billtype);
             recyclerView.setAdapter(myAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         }else{
@@ -123,14 +127,14 @@ public class ElectricityBill extends AppCompatActivity implements AdapterView.On
             paid=new int[]{R.drawable.tick};
         }
 
-        RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s3,s4,s6,images,paid);
+        RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s3,s4,s6,images,paid,billtype);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     } }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s1,s2,s5,images,paid);
+        RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s1,s2,s5,images,paid,billtype);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -164,7 +168,7 @@ public class ElectricityBill extends AppCompatActivity implements AdapterView.On
 
     }
     public void ClickSettings(View view){
-        MainActivity.redirectActivity( this,Preference.class);
+        MainActivity.redirectActivity( this,Settings.class);
     }
     public void ClickLogout(View view){
         MainActivity.logout(this);

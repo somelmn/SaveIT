@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity{
         redirectActivity( this,AboutUs.class);
     }
     public void ClickSettings(View view){
-        redirectActivity( this,Preference.class);
+        redirectActivity( this,Settings.class);
     }
     public void ClickLogout(View view){ logout(this); }
 
