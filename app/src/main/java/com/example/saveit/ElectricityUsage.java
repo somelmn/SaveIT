@@ -2,6 +2,7 @@ package com.example.saveit;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -28,10 +29,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class ElectricityUsage extends AppCompatActivity {
     DrawerLayout drawerLayout;
     TextView tname,temail;
+
+    private static String TAG ="ElectricityUsage";
 
 
     @Override
@@ -92,15 +96,24 @@ public class ElectricityUsage extends AppCompatActivity {
     private List<BarEntry> getUsageEntries() {
         ArrayList<BarEntry> energyUsage = new ArrayList<>();
 
-        energyUsage.add(new BarEntry(0,50));
-        energyUsage.add(new BarEntry(1,89));
-        energyUsage.add(new BarEntry(2,150));
-        energyUsage.add(new BarEntry(3,69));
-        energyUsage.add(new BarEntry(4,98));
-        energyUsage.add(new BarEntry(5,33));
-        energyUsage.add(new BarEntry(6,154));
+        energyUsage.add(new BarEntry(0, (float) getDailyUsage()));
+        energyUsage.add(new BarEntry(1, (float) getDailyUsage()));
+        energyUsage.add(new BarEntry(2, (float) getDailyUsage()));
+        energyUsage.add(new BarEntry(3, (float) getDailyUsage()));
+        energyUsage.add(new BarEntry(4, (float) getDailyUsage()));
+        energyUsage.add(new BarEntry(5, (float) getDailyUsage()));
+        energyUsage.add(new BarEntry(6, (float) getDailyUsage()));
 
-        return energyUsage.subList(0, 7);
+        return energyUsage.subList(0, 6);
+    }
+
+    public double getDailyUsage() {
+        double rangeMin = 6.3;
+        double rangeMax = 9.3;
+
+        Random r = new Random();
+        double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
+        return randomValue;
     }
 
     public void ClickMenu(View view){
