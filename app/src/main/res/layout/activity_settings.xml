@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
+            android:textSize="15sp"
             android:onClick="onCheckboxClicked"
             android:text="Enable Dark Mode" />
 
@@ -50,10 +51,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginStart="23dp"
+
+            android:textSize="15sp"
             android:text="Delete Account"
-            android:textColor="@color/black"
             android:drawableLeft="@drawable/ic_baseline_delete_24"
             android:onClick="ClickDelete"
+            android:textColor = "?android:textColorPrimary"
             android:drawablePadding="5dp"/>
 
 
@@ -74,14 +77,13 @@
 
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@android:color/white">
+        android:id="@+id/nav_drawer">
         <include
             layout="@layout/main_nav_drawer"/>
-    </RelativeLayout>
-
+    </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

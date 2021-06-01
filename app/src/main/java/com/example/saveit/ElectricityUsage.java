@@ -4,10 +4,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -65,6 +67,15 @@ public class ElectricityUsage extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+        int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
+        if(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES){
+            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.grey);
+        }
+        else{
+            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.white);
+        }
 
 
         BarChart barChart = findViewById(R.id.graph);

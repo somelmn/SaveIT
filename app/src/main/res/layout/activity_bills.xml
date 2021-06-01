@@ -57,13 +57,13 @@
 
             <TextView
                 android:layout_width="122dp"
+                android:textColor = "?android:textColorPrimary"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="170dp"
                 android:layout_marginTop="100dp"
                 android:fontFamily="@font/abhaya_libre"
                 android:onClick="ClickElectricity"
                 android:text="Electricity"
-                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -73,6 +73,7 @@
                 android:layout_marginLeft="250dp"
                 android:layout_marginTop="90dp"
                 android:onClick="ClickElectricity"
+                android:textColor = "?android:textColorPrimary"
                 android:src="@drawable/ic_baseline_arrow_forward_24" />
 
             <ImageView
@@ -90,7 +91,7 @@
                 android:fontFamily="@font/abhaya_libre"
                 android:onClick="ClickWater"
                 android:text="Water"
-                android:textColor="@color/black"
+                android:textColor = "?android:textColorPrimary"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -101,6 +102,7 @@
                 android:layout_marginTop="310dp"
                 android:contentDescription="TODO"
                 android:onClick="ClickWater"
+                android:textColor = "?android:textColorPrimary"
                 android:src="@drawable/ic_baseline_arrow_forward_24" />
 
             <pl.droidsonroids.gif.GifImageView
@@ -121,7 +123,7 @@
                 android:fontFamily="@font/abhaya_libre"
                 android:onClick="ClickGas"
                 android:text="Gas"
-                android:textColor="@color/black"
+                android:textColor = "?android:textColorPrimary"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -130,6 +132,7 @@
                 android:layout_height="53dp"
                 android:layout_marginLeft="220dp"
                 android:layout_marginTop="535dp"
+                android:textColor = "?android:textColorPrimary"
                 android:onClick="ClickGas"
                 android:src="@drawable/ic_baseline_arrow_forward_24" />
 
@@ -145,14 +148,14 @@
 
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@android:color/white">
+        android:id="@+id/nav_drawer">
         <include
             layout="@layout/main_nav_drawer"/>
-    </RelativeLayout>
+    </LinearLayout>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

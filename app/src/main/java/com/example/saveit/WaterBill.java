@@ -2,6 +2,7 @@ package com.example.saveit;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -72,6 +74,15 @@ public class WaterBill extends AppCompatActivity implements AdapterView.OnItemSe
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+        int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
+        if(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES){
+            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.grey);
+        }
+        else{
+            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.white);
+        }
 
         recyclerView=findViewById(R.id.recycler_view);
 

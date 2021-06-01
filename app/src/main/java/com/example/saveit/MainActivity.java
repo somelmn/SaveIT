@@ -7,11 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -59,6 +61,16 @@ public class MainActivity extends AppCompatActivity{
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+
+        int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
+        if(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES){
+            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.grey);
+        }
+        else{
+            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.white);
+        }
 
 
         bottomNavigation = findViewById(R.id.bottom_navigation);

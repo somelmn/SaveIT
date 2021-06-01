@@ -3,14 +3,19 @@ package com.example.saveit;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.preference.PreferenceManager;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +47,23 @@ public class Settings extends AppCompatActivity {
         tname = findViewById(R.id.nav_name);
         temail = findViewById(R.id.nav_email);
 
+
+        CheckBox checkBox1 = (CheckBox) findViewById(R.id.checkbox_dark);
+        boolean checked = PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean("checkBox1", false);
+        int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
+        if(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES){
+            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.grey);
+            checkBox1.setChecked(checked);
+        }
+        else{
+            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.white);
+            checkBox1.setChecked(false);
+        }
+
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getEmail();
         temail.setText(uid);
@@ -72,11 +94,17 @@ public class Settings extends AppCompatActivity {
             case R.id.checkbox_dark:
                 if (checked){
 
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
+                    li.setBackgroundResource(R.color.grey);
+                    PreferenceManager.getDefaultSharedPreferences(this).edit()
+                            .putBoolean("checkBox1", checked).commit();
+                    break;
                 }
-
-            else
-                break;
-
+            else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    break;
+                }
         }
     }
     public void ClickDelete(View view) {
