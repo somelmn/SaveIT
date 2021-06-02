@@ -10,16 +10,15 @@
         android:id="@+id/nav_pic"
         android:layout_width="wrap_content"
         android:layout_height="120dp"
-        android:layout_margin="16dp"
+        android:layout_margin="25dp"
         android:onClick="ClickLogo"
-        android:src="@drawable/logo" />
+        android:src="@drawable/saveit" />
 
     <TextView
         android:id="@+id/nav_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textColor="#636363"
         android:textSize="15sp" />
 
     <TextView
@@ -27,7 +26,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textColor="#636363"
         android:textSize="13sp"
         android:textStyle="italic" />
     <View

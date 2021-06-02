@@ -46,6 +46,20 @@
             android:textColor="@color/teal_200" />
 
         <TextView
+            android:id="@+id/changepass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="23dp"
+
+            android:textSize="15sp"
+            android:text="Change Password"
+            android:drawableLeft="@drawable/ic_baseline_edit_24"
+            android:onClick="ClickChange"
+            android:textColor = "?android:textColorPrimary"
+            android:drawablePadding="5dp"/>
+
+        <TextView
             android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

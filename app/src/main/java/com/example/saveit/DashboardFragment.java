@@ -6,7 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 
@@ -57,7 +61,22 @@ public class DashboardFragment extends Fragment {
         // Inflate the layout for this fragment
         return dashboardView;
     }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
+        int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
+        if(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES){
+            LinearLayout li=(LinearLayout)view.findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.colorTextPrimary);
+            LinearLayout toolbar=(LinearLayout)view.findViewById(R.id.toolbar);
+            toolbar.setBackgroundResource(R.color.colorTextPrimary);
+        }
+        else{
+            LinearLayout li=(LinearLayout)view.findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.white);
+        }
+    }
 
 
 }

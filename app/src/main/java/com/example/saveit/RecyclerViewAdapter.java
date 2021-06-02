@@ -19,18 +19,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     String bill_type;
     String data1[], data2[],data3[];
-    int img[],pay[];
+    int img[],pay[], billpic[];
     Context context;
     Button btn;
-    int[] bill_electricity ={R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,
-            R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150,R.drawable.electricity_150};
-    int[] bill_water={R.drawable.water,R.drawable.water,R.drawable.water,R.drawable.water,R.drawable.water,R.drawable.water,R.drawable.water,R.drawable.water,R.drawable.water,
-            R.drawable.water,R.drawable.water,R.drawable.water};
-    int[] bill_gas={R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,R.drawable.gas2,
-            R.drawable.gas2,R.drawable.gas2};
 
 
-    public RecyclerViewAdapter(Context ct, String s1[], String s2[],String s3[], int images[],int paid[], String type){
+    public RecyclerViewAdapter(Context ct, String s1[], String s2[],String s3[], int images[],int paid[], String type, int bill[]){
         context=ct;
         data1=s1;
         data2=s2;
@@ -38,6 +32,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         img=images;
         pay=paid;
         bill_type=type;
+        billpic=bill;
+
     }
     @NonNull
     @NotNull
@@ -59,28 +55,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
 
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 if(bill_type.equals("Electricity Bills")){
                     Toast.makeText(view.getContext(),data2[position],Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(context,BillClicked.class);
                     intent.putExtra("bill_type",bill_type);
-                    intent.putExtra("bill_img", bill_electricity[position]);
+                    intent.putExtra("bill_img", billpic[position]);
                     context.startActivity(intent);
                 }
                 else if(bill_type.equals("Gas Bills")){
                     Toast.makeText(view.getContext(),data2[position],Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(context,BillClicked.class);
                     intent.putExtra("bill_type",bill_type);
-                    intent.putExtra("bill_img", bill_gas[position]);
+                    intent.putExtra("bill_img", billpic[position]);
                     context.startActivity(intent);
                 }else{
                     Toast.makeText(view.getContext(),data2[position],Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(context,BillClicked.class);
                     intent.putExtra("bill_type",bill_type);
-                    intent.putExtra("bill_img", bill_water[position]);
+                    intent.putExtra("bill_img", billpic[position]);
                     context.startActivity(intent);
                 }
 

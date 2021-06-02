@@ -54,7 +54,9 @@ public class Settings extends AppCompatActivity {
         int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
         if(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES){
             LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
-            li.setBackgroundResource(R.color.grey);
+            li.setBackgroundResource(R.color.colorTextPrimary);
+            LinearLayout toolbar=(LinearLayout)findViewById(R.id.toolbar);
+            toolbar.setBackgroundResource(R.color.colorTextPrimary);
             checkBox1.setChecked(checked);
         }
         else{
@@ -144,6 +146,10 @@ public class Settings extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
 
+    }
+
+    public void ClickChange(View view) {
+        MainActivity.openDrawer(drawerLayout);
     }
 
     public void ClickMenu(View view) {

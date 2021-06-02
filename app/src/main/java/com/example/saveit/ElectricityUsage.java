@@ -67,15 +67,6 @@ public class ElectricityUsage extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-        int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
-        if(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES){
-            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
-            li.setBackgroundResource(R.color.grey);
-        }
-        else{
-            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
-            li.setBackgroundResource(R.color.white);
-        }
 
 
         BarChart barChart = findViewById(R.id.graph);
@@ -89,10 +80,8 @@ public class ElectricityUsage extends AppCompatActivity {
 
         set1 = new BarDataSet(usageEntries, "Energy Usage");
         set1.setColors(ColorTemplate.MATERIAL_COLORS);
-        set1.setValueTextColor(Color.BLACK);
         set1.setValueTextSize(16f);
         dataSets.add(set1);
-
 
         //String setter in x-Axis
         barChart.getXAxis().setValueFormatter(new com.github.mikephil.charting.formatter.IndexAxisValueFormatter(xAxisValues));
@@ -102,6 +91,28 @@ public class ElectricityUsage extends AppCompatActivity {
         barChart.setFitBars(true);
         barChart.getDescription().setText("Energy Usage per day!");
         barChart.animateY(2000);
+
+        int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
+        if(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES){
+            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.grey);
+            set1.setValueTextColor(Color.WHITE);
+            barChart.getXAxis().setTextColor(Color.WHITE);
+            set1.setBarBorderColor(Color.WHITE);
+            barChart.getDescription().setTextColor(Color.WHITE);
+            LinearLayout toolbar=(LinearLayout)findViewById(R.id.toolbar);
+            toolbar.setBackgroundResource(R.color.colorTextPrimary);
+
+        }
+        else{
+            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.white);
+            set1.setValueTextColor(Color.BLACK);
+            barChart.getXAxis().setTextColor(Color.BLACK);
+            set1.setBarBorderColor(Color.BLACK);
+            barChart.getDescription().setTextColor(Color.BLACK);
+        }
+
     }
 
     private List<BarEntry> getUsageEntries() {
@@ -125,6 +136,7 @@ public class ElectricityUsage extends AppCompatActivity {
         Random r = new Random();
         double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
         return randomValue;
+
     }
 
     public void ClickMenu(View view){

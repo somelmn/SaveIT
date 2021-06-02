@@ -14,17 +14,12 @@
        android:orientation="vertical">
       <include
           layout="@layout/main_toolbar"/>
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:textSize="50sp"
-          android:textStyle="bold"
-          android:gravity="center"/>
 
    </LinearLayout>
 
    <LinearLayout
        android:layout_width="match_parent"
+       android:id="@+id/bottom"
        android:layout_height="wrap_content"
        android:orientation="vertical">
    <FrameLayout
@@ -40,7 +35,6 @@
       app:mbn_circleColor="@color/white"
       app:mbn_selectedIconColor="#3c415e"
       app:mbn_countTextColor="@color/white"
-      app:mbn_countBackgroundColor="#ff6f00"
       app:mbn_defaultIconColor="@color/white"
       app:mbn_backgroundBottomColor="#3c415e"/>
    </LinearLayout>

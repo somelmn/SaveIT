@@ -62,15 +62,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
-        if(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES){
-            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
-            li.setBackgroundResource(R.color.grey);
-        }
-        else{
-            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
-            li.setBackgroundResource(R.color.white);
-        }
+
 
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
@@ -116,7 +108,19 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
+        if(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES){
+            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.colorTextPrimary);
+            LinearLayout toolbar=(LinearLayout)findViewById(R.id.toolbar);
+            toolbar.setBackgroundResource(R.color.colorTextPrimary);
+            bottomNavigation.setBackgroundBottomColor(R.color.black);
 
+        }
+        else{
+            LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
+            li.setBackgroundResource(R.color.white);
+        }
     }
 
     private void loadFragment(Fragment fragment) {
@@ -159,10 +163,7 @@ public class MainActivity extends AppCompatActivity{
     public void ClickHome(View view){
         recreate();
     }
-    public void ClickDashboard(View view){
-
-        redirectActivity( this,Dashboard.class);
-    }
+    public void ClickDashboard(View view){ redirectActivity( this,Dashboard.class); }
     public void ClickBills(View view){
         redirectActivity( this,Bills.class);
     }

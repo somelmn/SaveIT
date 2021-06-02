@@ -34,8 +34,11 @@ public class GasBill extends AppCompatActivity implements AdapterView.OnItemSele
     TextView tname,temail,today,type;
     String billtype;
     String s1[], s2[],s3[],s4[],s5[],s6[];
-    int images[] ={R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,
-            R.drawable.bills,R.drawable.bills,R.drawable.bills};
+    int s8[];
+    int bill_gas[] ={R.drawable.gas_january,R.drawable.gas_february,R.drawable.gas_march,R.drawable.gas_april,R.drawable.gas_may,R.drawable.gas_june,
+            R.drawable.cross,R.drawable.cross,R.drawable.cross, R.drawable.cross,R.drawable.cross,R.drawable.cross};
+    int images[] ={R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,R.drawable.bills,
+            R.drawable.bills,R.drawable.bills,R.drawable.bills, R.drawable.bills,R.drawable.bills,R.drawable.bills};
     int paid[] ={R.drawable.tick,R.drawable.tick,R.drawable.tick,R.drawable.tick,R.drawable.tick,R.drawable.tick,R.drawable.tick,R.drawable.tick,R.drawable.tick,
             R.drawable.tick,R.drawable.tick,R.drawable.tick};
     RecyclerView recyclerView;
@@ -77,7 +80,9 @@ public class GasBill extends AppCompatActivity implements AdapterView.OnItemSele
         int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
         if(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES){
             LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
-            li.setBackgroundResource(R.color.grey);
+            li.setBackgroundResource(R.color.colorTextPrimary);
+            LinearLayout toolbar=(LinearLayout)findViewById(R.id.toolbar);
+            toolbar.setBackgroundResource(R.color.colorTextPrimary);
         }
         else{
             LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
@@ -109,7 +114,7 @@ public class GasBill extends AppCompatActivity implements AdapterView.OnItemSele
             String[] news1 = Arrays.copyOfRange(s1, 1, month+1);
             String[] news2 = Arrays.copyOfRange(s2, 1, month+1);
             String[] news3 = Arrays.copyOfRange(s5, 1, month+1);
-            RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,news1,news2,news3,images,paid,billtype);
+            RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,news1,news2,news3,images,paid,billtype,bill_gas);
             recyclerView.setAdapter(myAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         }else{
@@ -117,6 +122,7 @@ public class GasBill extends AppCompatActivity implements AdapterView.OnItemSele
             s3 = new String[]{s1[position]};
             s4=  new String[]{s2[position]};
             s6=  new String[]{s5[position]};
+            s8 = new int[]{bill_gas[position-1]};
 
             if(position>month){
                 s6 = new String[]{"No Bill"};
@@ -125,14 +131,14 @@ public class GasBill extends AppCompatActivity implements AdapterView.OnItemSele
                 paid=new int[]{R.drawable.tick};
             }
 
-            RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s3,s4,s6,images,paid,billtype);
+            RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s3,s4,s6,images,paid,billtype,s8);
             recyclerView.setAdapter(myAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         } }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s1,s2,s5,images,paid,billtype);
+        RecyclerViewAdapter myAdapter=new RecyclerViewAdapter(this,s1,s2,s5,images,paid,billtype,bill_gas);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
