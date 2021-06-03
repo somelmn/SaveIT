@@ -12,15 +12,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -31,6 +35,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 public class Settings extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -149,8 +155,38 @@ public class Settings extends AppCompatActivity {
     }
 
     public void ClickChange(View view) {
-        MainActivity.openDrawer(drawerLayout);
-    }
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(Settings.this);
+        builder.setTitle("Reset Password?");
+        builder.setMessage("Are you sure you want to reset your password?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String email = user.getEmail();
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                auth.sendPasswordResetEmail(email)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull @NotNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(Settings.this,"Check your email to reset your password!", Toast.LENGTH_LONG).show();
+                                }else{
+                                    Toast.makeText(Settings.this,"Something went wrong! Please try again.", Toast.LENGTH_LONG).show();
+                                }
+
+                            }
+                        });
+
+            }
+        });
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show(); }
+
 
     public void ClickMenu(View view) {
         MainActivity.openDrawer(drawerLayout);
