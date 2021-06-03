@@ -1,6 +1,5 @@
 package com.example.saveit;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +21,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -176,20 +176,10 @@ public class Savings extends AppCompatActivity {
         }
 
         PieDataSet pieDataSet = new PieDataSet(yEntries, "Savings");
+        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
 
-        ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.GRAY);
-        colors.add(Color.BLUE);
-        colors.add(Color.RED);
-        colors.add(Color.GREEN);
-        colors.add(Color.CYAN);
-        colors.add(Color.YELLOW);
-        colors.add(Color.MAGENTA);
-        colors.add(Color.DKGRAY);
-
-        pieDataSet.setColors(colors);
 
 
         Legend legend = pieChart.getLegend();
