@@ -74,7 +74,7 @@
                 android:layout_height="53dp"
                 android:layout_marginLeft="170dp"
                 android:layout_marginTop="310dp"
-                android:text="Electricity"
+                android:text="Water"
                 android:id="@+id/Water"/>
 
 
@@ -90,7 +90,7 @@
                 android:layout_height="53dp"
                 android:layout_marginLeft="170dp"
                 android:layout_marginTop="535dp"
-                android:text="Electricity"
+                android:text="Gas"
                 android:id="@+id/Gas"/>
 
 
