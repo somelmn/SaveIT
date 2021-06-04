@@ -16,17 +16,6 @@
             layout="@layout/main_toolbar"/>
 
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/graph"
-            android:layout_width="match_parent"
-            android:layout_height="200dip"
-            android:layout_marginTop="60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
     </LinearLayout>
 
 
@@ -34,17 +23,195 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <FrameLayout
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/graph"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:id="@+id/frame_layout"/>
+            android:layout_height="200dip"
+            android:layout_marginTop="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
 
+        </com.github.mikephil.charting.charts.BarChart>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/type2"
+                android:layout_width="330dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/abhaya_libre"
+                android:gravity="center_vertical"
+                android:text="Real Usage"
+                android:textColor="@color/grey"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.253"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/type3"
+                android:layout_width="330dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/abhaya_libre"
+                android:gravity="center_vertical"
+                android:text="Estimated Usage"
+                android:textColor="@color/grey"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.253"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cost2" />
+
+            <TextView
+                android:id="@+id/cost2"
+                android:layout_width="195dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:text="Cost: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/monthlyTotal5" />
+
+            <TextView
+                android:id="@+id/weeklyTotal3"
+                android:layout_width="195dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:text="Weekly Total:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/type2" />
+
+            <TextView
+                android:id="@+id/weeklyTotal"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Weekly Total:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#4CAF50"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/weeklyTotal3"
+                app:layout_constraintTop_toBottomOf="@+id/type2" />
+
+            <TextView
+                android:id="@+id/monthlyTotal"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Monthly Total:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#F44336"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/monthlyTotal5"
+                app:layout_constraintTop_toBottomOf="@+id/weeklyTotal" />
+
+            <TextView
+                android:id="@+id/cost"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Cost: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#F44336"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/cost2"
+                app:layout_constraintTop_toBottomOf="@+id/monthlyTotal" />
+
+            <TextView
+                android:id="@+id/estimatedUsage2"
+                android:layout_width="195dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:text="Monthly Estimated: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/type3" />
+
+            <TextView
+                android:id="@+id/estimatedUsage"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Monthly Estimated: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#4CAF50"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/estimatedUsage2"
+                app:layout_constraintTop_toBottomOf="@+id/type3" />
+
+            <TextView
+                android:id="@+id/estimatedCost2"
+                android:layout_width="195dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:text="Estimated Cost: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/estimatedUsage2" />
+
+            <TextView
+                android:id="@+id/estimatedCost"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Estimated Cost: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#4CAF50"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/estimatedCost2"
+                app:layout_constraintTop_toBottomOf="@+id/estimatedUsage" />
+
+            <TextView
+                android:id="@+id/monthlyTotal5"
+                android:layout_width="195dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:text="Monthly Total:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/weeklyTotal3" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="top"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="207dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="300dp"
@@ -53,6 +220,7 @@
         android:id="@+id/nav_drawer">
         <include
             layout="@layout/main_nav_drawer"/>
+
     </LinearLayout>
 
 

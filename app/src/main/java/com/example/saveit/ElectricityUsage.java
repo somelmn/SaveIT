@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,6 +40,10 @@ public class ElectricityUsage extends AppCompatActivity {
 
     private static String TAG ="ElectricityUsage";
 
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
+
+    private List<Double> monthlyUsage = new ArrayList<>(Arrays.asList(7.84, 9.23, 6.37, 6.35, 7.58, 8.48, 8.86, 7.48, 8.68, 8.65, 6.91, 8.40, 6.39, 6.40, 6.84, 6.50, 7.75,7.86, 7.53, 8.82, 7.71, 7.32, 8.01, 7.47, 8.57, 7.01, 7.48, 6.84, 6.74, 6.68, 7.22));
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,9 @@ public class ElectricityUsage extends AppCompatActivity {
 
         tname = findViewById(R.id.nav_name);
         temail = findViewById(R.id.nav_email);
+
+
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getEmail();
         temail.setText(uid);
@@ -92,6 +100,13 @@ public class ElectricityUsage extends AppCompatActivity {
         barChart.getDescription().setText("Energy Usage per day!");
         barChart.animateY(2000);
 
+        updateWeeklyTextView();
+        updateMonthlyTextView();
+        updateCostTextView();
+
+        updateEstimatedCostTextView();
+        updateEstimatedTextView();
+
         int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
         if(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES){
             LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
@@ -118,26 +133,96 @@ public class ElectricityUsage extends AppCompatActivity {
     private List<BarEntry> getUsageEntries() {
         ArrayList<BarEntry> energyUsage = new ArrayList<>();
 
-        energyUsage.add(new BarEntry(0, (float) getDailyUsage()));
-        energyUsage.add(new BarEntry(1, (float) getDailyUsage()));
-        energyUsage.add(new BarEntry(2, (float) getDailyUsage()));
-        energyUsage.add(new BarEntry(3, (float) getDailyUsage()));
-        energyUsage.add(new BarEntry(4, (float) getDailyUsage()));
-        energyUsage.add(new BarEntry(5, (float) getDailyUsage()));
-        energyUsage.add(new BarEntry(6, (float) getDailyUsage()));
+        energyUsage.add(new BarEntry(0, (float) getDailyUsage(7)));
+        energyUsage.add(new BarEntry(1, (float) getDailyUsage(6)));
+        energyUsage.add(new BarEntry(2, (float) getDailyUsage(5)));
+        energyUsage.add(new BarEntry(3, (float) getDailyUsage(4)));
+        energyUsage.add(new BarEntry(4, (float) getDailyUsage(3)));
+        energyUsage.add(new BarEntry(5, (float) getDailyUsage(2)));
+        energyUsage.add(new BarEntry(6, (float) getDailyUsage(1)));
 
-        return energyUsage.subList(0, 6);
+        return energyUsage.subList(0, 7);
     }
 
-    public double getDailyUsage() {
-        double rangeMin = 6.3;
-        double rangeMax = 9.3;
+    public double getDailyUsage(int i) {
 
-        Random r = new Random();
-        double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
-        return randomValue;
+        double daily = monthlyUsage.get(monthlyUsage.size() - i);
+
+        return daily;
 
     }
+
+    public double getWeeklyUsage() {
+
+        double weekly = 0;
+        for (int i=1; i<=7; i++) {
+            weekly = weekly + monthlyUsage.get(monthlyUsage.size() - i);
+        }
+
+        return weekly;
+
+    }
+
+    public double getMonthlyUsage() {
+
+        double monthly = 0;
+        for (int i=1; i<=30; i++) {
+            monthly = monthly + monthlyUsage.get(monthlyUsage.size() - i);
+        }
+
+        return monthly;
+
+    }
+
+    public String getEstimation() {
+
+        double val = getWeeklyUsage() * 4.28;
+
+        return df2.format(val);
+
+    }
+
+    public String getEstimatedCost() {
+
+        double val = getWeeklyUsage() * 4.28 * 0.3967;
+
+        return df2.format(val);
+
+    }
+
+    public String getCost() {
+
+        double val = getMonthlyUsage() * 0.3967;
+
+        return df2.format(val);
+    }
+
+    public void updateCostTextView() {
+        TextView textView = (TextView) findViewById(R.id.cost);
+        textView.setText(getCost() + " ₺ ▲");
+    }
+
+    public void updateWeeklyTextView() {
+        TextView textView = (TextView) findViewById(R.id.weeklyTotal);
+        textView.setText(getWeeklyUsage() + " kWh ▼");
+    }
+
+    public void updateMonthlyTextView() {
+        TextView textView = (TextView) findViewById(R.id.monthlyTotal);
+        textView.setText(getMonthlyUsage() + " kWh ▲");
+    }
+
+    public void updateEstimatedTextView() {
+        TextView textView = (TextView) findViewById(R.id.estimatedUsage);
+        textView.setText(getEstimation() + " kWh ▼");
+    }
+
+    public void updateEstimatedCostTextView() {
+        TextView textView = (TextView) findViewById(R.id.estimatedCost);
+        textView.setText(getEstimatedCost() + " ₺ ▼");
+    }
+
+
 
     public void ClickMenu(View view){
         MainActivity.openDrawer(drawerLayout);
