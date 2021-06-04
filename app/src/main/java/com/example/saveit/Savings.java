@@ -193,7 +193,7 @@ public class Savings extends AppCompatActivity {
                     }
 
                 }
-                String month = xData[pos1 + 1];
+                String month = xData[pos1];
                 Toast.makeText(Savings.this, "Month: " + month + "\n" + "Savings: " + savings + "TL", Toast.LENGTH_LONG).show();
 
 
