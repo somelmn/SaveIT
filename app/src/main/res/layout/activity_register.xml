@@ -90,15 +90,24 @@
         android:textStyle="bold"
         android:text="Regıster" />
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        android:text="Logın" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Already have an account?"
+            android:layout_marginLeft="60dp"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-22dp"
+            android:layout_marginLeft="250dp"
+            android:text="Login here."
+            android:textColor="@color/teal_700"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

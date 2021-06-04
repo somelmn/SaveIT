@@ -62,35 +62,45 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="370dp"
+            android:text="Forgot Password?"
+            android:textColor="@color/teal_700"
+            android:textSize="16sp" />
+
         <Button
             android:id="@+id/login"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="380dp"
+            android:layout_marginTop="20dp"
             android:text="Logın"
             android:textSize="16dp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/register"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
-            android:text="Regıster"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Don't have an account?"
+            android:layout_marginLeft="70dp"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/forgotPassword"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
-            android:text="Forgot Password"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-22dp"
+            android:layout_marginLeft="240dp"
+            android:text="Register here."
+            android:textColor="@color/teal_700"
+            android:textSize="16sp" />
+
 
     </LinearLayout>
 

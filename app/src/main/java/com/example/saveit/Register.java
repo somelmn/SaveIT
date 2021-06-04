@@ -35,7 +35,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         mAuth = FirebaseAuth.getInstance();
         registerUser = (Button) findViewById(R.id.register);
         registerUser.setOnClickListener(this);
-        loginUser = (Button) findViewById(R.id.login);
+        loginUser =  findViewById(R.id.login);
         loginUser.setOnClickListener(this);
         editTextFullName = (EditText) findViewById(R.id.name);
         editTextuserName = (EditText) findViewById(R.id.username);

@@ -32,10 +32,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        register = (TextView) findViewById(R.id.register);
+        register = findViewById(R.id.register);
         register.setOnClickListener( this);
 
-        loginUser= (Button) findViewById(R.id.login);
+        loginUser= findViewById(R.id.login);
         loginUser.setOnClickListener(this);
 
         editTextEmail = (EditText) findViewById(R.id.email);
@@ -43,11 +43,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         mAuth = FirebaseAuth.getInstance();
         forgotPassword = (TextView) findViewById(R.id.forgotPassword);
         forgotPassword.setOnClickListener( this);
-        
-
-        
-
-
 
 
     }
