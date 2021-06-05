@@ -62,8 +62,6 @@
             android:layout_weight="1"
             android:id="@+id/frame_layout"/>
 
-
-
     </LinearLayout>
 
     <LinearLayout

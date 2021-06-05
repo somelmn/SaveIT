@@ -2,15 +2,23 @@ package com.example.saveit;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.preference.PreferenceManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +31,11 @@ public class AboutUs extends AppCompatActivity {
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
     TextView tname,temail;
+    RecyclerView recyclerView;
+    String challange_name[]={"No Plastic Bottle Usage","Public Transportation"};
+    String challange_desc[]={"30 days","7 days"};
+    int img[]={R.drawable.circle,R.drawable.circle,R.drawable.circle,R.drawable.circle};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +45,7 @@ public class AboutUs extends AppCompatActivity {
 
         tname = findViewById(R.id.nav_name);
         temail = findViewById(R.id.nav_email);
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getEmail();
         temail.setText(uid);
@@ -51,6 +65,15 @@ public class AboutUs extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Take me to Challenges Page", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
         int defaultNightMode = AppCompatDelegate.getDefaultNightMode();
         if(defaultNightMode == AppCompatDelegate.MODE_NIGHT_YES){
             LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
@@ -63,7 +86,14 @@ public class AboutUs extends AppCompatActivity {
             li.setBackgroundResource(R.color.white);
         }
 
+        recyclerView = findViewById(R.id.recycler1);
+        ChallangesRecyclerAdapter myAdapter=new ChallangesRecyclerAdapter(this,challange_name,challange_desc,img);
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
+
+
     public void ClickMenu(View view){
         MainActivity.openDrawer(drawerLayout);
     }

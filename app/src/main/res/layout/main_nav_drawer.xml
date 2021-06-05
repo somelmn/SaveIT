@@ -90,14 +90,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="About Us"
+            android:text="Challenges"
             android:padding="12dp"
             android:layout_marginStart="16dp"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_info"/>
+            android:src="@drawable/ic_list"/>
     </LinearLayout>
 
     <LinearLayout
