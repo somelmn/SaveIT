@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
+    android:id="@+id/gas_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GasUsage">
@@ -16,18 +16,6 @@
             layout="@layout/main_toolbar"/>
 
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/graph"
-            android:layout_width="match_parent"
-            android:layout_height="200dip"
-            android:layout_marginTop="60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-
     </LinearLayout>
 
 
@@ -35,12 +23,193 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:id="@+id/frame_layout"/>
 
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/gasGraph"
+            android:layout_width="match_parent"
+            android:layout_height="200dip"
+            android:layout_marginTop="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+        </com.github.mikephil.charting.charts.BarChart>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/type2"
+                android:layout_width="330dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/abhaya_libre"
+                android:gravity="center_vertical"
+                android:text="Real Usage"
+                android:textColor="@color/grey"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.253"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/type3"
+                android:layout_width="330dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/abhaya_libre"
+                android:gravity="center_vertical"
+                android:text="Estimated Usage"
+                android:textColor="@color/grey"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.253"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gasCost2" />
+
+            <TextView
+                android:id="@+id/gasCost2"
+                android:layout_width="195dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:text="Cost: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gasMonthlyTotal5" />
+
+            <TextView
+                android:id="@+id/gasWeeklyTotal3"
+                android:layout_width="195dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:text="Weekly Total:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/type2" />
+
+            <TextView
+                android:id="@+id/gasWeeklyTotal"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Weekly Total:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#4CAF50"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/gasWeeklyTotal3"
+                app:layout_constraintTop_toBottomOf="@+id/type2" />
+
+            <TextView
+                android:id="@+id/gasMonthlyTotal"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Monthly Total:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#F44336"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/gasMonthlyTotal5"
+                app:layout_constraintTop_toBottomOf="@+id/gasWeeklyTotal" />
+
+            <TextView
+                android:id="@+id/gasCost"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Cost: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#F44336"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/gasCost2"
+                app:layout_constraintTop_toBottomOf="@+id/gasMonthlyTotal" />
+
+            <TextView
+                android:id="@+id/gasEstimatedUsage2"
+                android:layout_width="195dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:text="Monthly Estimated: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/type3" />
+
+            <TextView
+                android:id="@+id/gasEstimatedUsage"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Monthly Estimated: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#4CAF50"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/gasEstimatedUsage2"
+                app:layout_constraintTop_toBottomOf="@+id/type3" />
+
+            <TextView
+                android:id="@+id/gasEstimatedCost2"
+                android:layout_width="195dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:text="Estimated Cost: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gasEstimatedUsage2" />
+
+            <TextView
+                android:id="@+id/gasEstimatedCost"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Estimated Cost: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#4CAF50"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/gasEstimatedCost2"
+                app:layout_constraintTop_toBottomOf="@+id/gasEstimatedUsage" />
+
+            <TextView
+                android:id="@+id/gasMonthlyTotal5"
+                android:layout_width="195dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:text="Monthly Total:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gasWeeklyTotal3" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="top"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="207dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
@@ -51,6 +220,7 @@
         android:id="@+id/nav_drawer">
         <include
             layout="@layout/main_nav_drawer"/>
+
     </LinearLayout>
 
 
