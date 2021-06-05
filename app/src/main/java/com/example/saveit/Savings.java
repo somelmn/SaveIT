@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,12 +39,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Savings extends AppCompatActivity {
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
-    TextView tname,temail,month1,month2,month3,month4,month1name,month2name,month3name,month4name,average,total,goal1,goal2,goal3,goal4,date1,date2,date3,date4;
+    TextView tname,temail,month1,month2,month3,month4,month1name,month2name,month3name,month4name,average,total,goal1,goal2,goal3,goal4,date1,date2,date3,date4,status1,status2,status3,status4;
     EditText setgoal;
     Button set;
 
@@ -50,11 +55,14 @@ public class Savings extends AppCompatActivity {
     private float yData[] = {50, 20, 68, 32, 44, 10, 0};
     private int goals[]={50, 40, 50, 50, 30, 40, 0};
     float tot,ave;
-    private String dates[] = {"15.01.2021", "15.02.2021", "15.03.2021", "15.04.2021", "15.05.2021", "15.06.2021","15.07.2021"};
-    private String xData[] = {"January", "February", "March", "April", "May", "June","July"};
+    private String dates[] = {"15.01.2021", "15.02.2021", "15.03.2021", "15.04.2021", "15.05.2021", "15.06.2021","15.07.2021","15.08.2021","15.09.2021","15.10.2021","15.11.2021","15.12.2021"};
+    private String xData[] = {"January", "February", "March", "April", "May", "June","July","August","September","October","November","December"};
+    String status[]={"" , "" , "" , "" , "" , "" , "" };
     PieChart pieChart;
     String comment1;
-
+    Date date = new Date();
+    LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    int monthint = localDate.getMonthValue();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +73,9 @@ public class Savings extends AppCompatActivity {
 
         int a = PreferenceManager.getDefaultSharedPreferences(Savings.this).getInt("MyInt",0);
 
-        pieChart = (PieChart) findViewById(R.id.IdPieChart);
 
+
+        pieChart = (PieChart) findViewById(R.id.IdPieChart);
         pieChart.setRotationEnabled(true);
         pieChart.setHoleRadius(25f);
         pieChart.setTransparentCircleAlpha(0);
@@ -93,22 +102,27 @@ public class Savings extends AppCompatActivity {
         goal2 = findViewById(R.id.goal2);
         goal3 = findViewById(R.id.goal3);
         goal4 = findViewById(R.id.goal4);
-        date1.setText(dates[3]);
-        date2.setText(dates[4]);
-        date3.setText(dates[5]);
-        date4.setText(dates[6]);
-        month1name.setText(xData[3]);
-        month2name.setText(xData[4]);
-        month3name.setText(xData[5]);
-        month4name.setText(xData[6]);
-        month1.setText(String.valueOf(yData[3]));
-        month2.setText(String.valueOf(yData[4]));
-        month3.setText(String.valueOf(yData[5]));
-        month4.setText(String.valueOf(yData[6]));
-        goal1.setText(String.valueOf(goals[3]));
-        goal2.setText(String.valueOf(goals[4]));
-        goal3.setText(String.valueOf(goals[5]));
-        goal4.setText(String.valueOf(a));
+        status1 = findViewById(R.id.status1);
+        status2 = findViewById(R.id.status2);
+        status3 = findViewById(R.id.status3);
+        status4 = findViewById(R.id.status4);
+
+        date1.setText(dates[monthint-3]);
+        date2.setText(dates[monthint-2]);
+        date3.setText(dates[monthint-1]);
+        date4.setText(dates[monthint]);
+        month1name.setText(xData[monthint-3]);
+        month2name.setText(xData[monthint-2]);
+        month3name.setText(xData[monthint-1]);
+        month4name.setText(xData[monthint]);
+        month1.setText(String.valueOf(yData[monthint-3])+"₺");
+        month2.setText(String.valueOf(yData[monthint-2])+"₺");
+        month3.setText(String.valueOf(yData[monthint-1])+"₺");
+        month4.setText(String.valueOf(yData[monthint])+"₺");
+        goal1.setText(String.valueOf(goals[monthint-3])+"₺");
+        goal2.setText(String.valueOf(goals[monthint-2])+"₺");
+        goal3.setText(String.valueOf(goals[monthint-1])+"₺");
+        goal4.setText(String.valueOf(a)+"₺");
 
         set = (Button) findViewById(R.id.set);
         set.setOnClickListener(new View.OnClickListener() {
@@ -118,28 +132,39 @@ public class Savings extends AppCompatActivity {
 
                 String goal = setgoal.getText().toString();
                 int b=Integer.parseInt(goal);
-                goals[6]=b;
+                goals[monthint]=b;
 
                 PreferenceManager.getDefaultSharedPreferences(Savings.this).edit().putInt("MyInt",b).commit();
 
-                goal4.setText(String.valueOf(b));
+                goal4.setText(String.valueOf(b)+"₺");
                 comment1="Your goal for next month is : "+goal;
-                Toast.makeText(Savings.this,comment1,Toast.LENGTH_SHORT).show();
+                Toast.makeText(Savings.this,comment1+"₺",Toast.LENGTH_SHORT).show();
             }
 
         });
 
+        for(int j=0; j<monthint; j++){
+            if(yData[j]>goals[j]){
+                status[j]="Goal reached!";
+            }else{
+                status[j]="Goal not reached!";
+            }
+        }
+        status1.setText(status[monthint-3]);
+        status2.setText(status[monthint-2]);
+        status3.setText(status[monthint-1]);
+        status4.setText(status[monthint]);
 
 
-        for(int i=0; i<yData.length; i++){
+        for(int i=0; i<monthint; i++){
             tot = tot + yData[i];
         }
-        ave = tot / yData.length;
+        ave = tot / monthint;
 
         total=findViewById(R.id.total);
-        total.setText(String.valueOf(tot));
+        total.setText(String.valueOf(tot)+" ₺");
         average= findViewById(R.id.average);
-        average.setText(String.valueOf(ave));
+        average.setText(String.valueOf(ave)+" ₺");
 
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -171,6 +196,8 @@ public class Savings extends AppCompatActivity {
             li.setBackgroundResource(R.color.colorTextPrimary);
             LinearLayout toolbar=(LinearLayout)findViewById(R.id.toolbar);
             toolbar.setBackgroundResource(R.color.colorTextPrimary);
+            TableLayout table =(TableLayout)findViewById(R.id.table);
+            table.setBackgroundResource(R.color.colorTextPrimary);
         }
         else{
             LinearLayout li=(LinearLayout)findViewById(R.id.nav_drawer);
@@ -186,7 +213,7 @@ public class Savings extends AppCompatActivity {
                 int pos1 = e.toString().indexOf("y: ");
                 String savings = e.toString().substring(pos1 + 3);
 
-                for(int i = 0; i< yData.length; i++) {
+                for(int i = 0; i< monthint; i++) {
                     if (yData[i] == Float.parseFloat(savings)) {
                         pos1 = i;
                         break;
@@ -249,11 +276,11 @@ public class Savings extends AppCompatActivity {
         ArrayList<PieEntry> yEntries = new ArrayList<>();
         ArrayList<String> xEntries = new ArrayList<>();
 
-        for(int i = 0; i< yData.length; i++){
+        for(int i = 0; i< monthint; i++){
             yEntries.add(new PieEntry(yData[i], i));
 
         }
-        for(int i = 0; i< xData.length; i++){
+        for(int i = 0; i< monthint; i++){
             xEntries.add(xData[i]);
 
         }

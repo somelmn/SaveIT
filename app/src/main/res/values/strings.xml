@@ -52,48 +52,48 @@
 
     <string-array name="electricity_bills_cost">
         <item> </item>
-        <item>200 tl</item>
-        <item>250 tl</item>
-        <item>150 tl</item>
-        <item>170 tl</item>
-        <item>195 tl</item>
-        <item>230 tl</item>
-        <item>330 tl</item>
-        <item>220 tl</item>
-        <item>200 tl</item>
-        <item>370 tl</item>
-        <item>320 tl</item>
-        <item>390 tl</item>
+        <item>200 ₺</item>
+        <item>250 ₺</item>
+        <item>150 ₺</item>
+        <item>170 ₺</item>
+        <item>195 ₺</item>
+        <item>230 ₺</item>
+        <item>330 ₺</item>
+        <item>220 ₺</item>
+        <item>200 ₺</item>
+        <item>370 ₺</item>
+        <item>320 ₺</item>
+        <item>390 ₺</item>
     </string-array>
     <string-array name="water_bills_cost">
         <item> </item>
-        <item>150 tl</item>
-        <item>170 tl</item>
-        <item>200 tl</item>
-        <item>270 tl</item>
-        <item>300 tl</item>
-        <item>145 tl</item>
-        <item>230 tl</item>
-        <item>120 tl</item>
-        <item>200 tl</item>
-        <item>270 tl</item>
-        <item>120 tl</item>
-        <item>290 tl</item>
+        <item>150 ₺</item>
+        <item>170 ₺</item>
+        <item>200 ₺</item>
+        <item>270 ₺</item>
+        <item>300 ₺</item>
+        <item>145 ₺</item>
+        <item>230 ₺</item>
+        <item>120 ₺</item>
+        <item>200 ₺</item>
+        <item>270 ₺</item>
+        <item>120 ₺</item>
+        <item>290 ₺</item>
     </string-array>
     <string-array name="gas_bills_cost">
         <item> </item>
-        <item>130 tl</item>
-        <item>170 tl</item>
-        <item>200 tl</item>
-        <item>230 tl</item>
-        <item>300 tl</item>
-        <item>195 tl</item>
-        <item>300 tl</item>
-        <item>220 tl</item>
-        <item>400 tl</item>
-        <item>470 tl</item>
-        <item>320 tl</item>
-        <item>290 tl</item>
+        <item>130 ₺</item>
+        <item>170 ₺</item>
+        <item>200 ₺</item>
+        <item>230 ₺</item>
+        <item>300 ₺</item>
+        <item>195 ₺</item>
+        <item>300 ₺</item>
+        <item>220 ₺</item>
+        <item>400 ₺</item>
+        <item>470 ₺</item>
+        <item>320 ₺</item>
+        <item>290 ₺</item>
     </string-array>
 
 

@@ -185,6 +185,10 @@ public class ElectricityBill extends AppCompatActivity implements AdapterView.On
         MainActivity.redirectActivity(this,AboutUs.class);
 
     }
+    public void ClickSavings(View view){
+        MainActivity.redirectActivity( this,Savings.class);
+    }
+
     public void ClickSettings(View view){
         MainActivity.redirectActivity( this,Settings.class);
     }

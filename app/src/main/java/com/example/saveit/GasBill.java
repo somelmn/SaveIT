@@ -170,6 +170,9 @@ public class GasBill extends AppCompatActivity implements AdapterView.OnItemSele
         MainActivity.redirectActivity(this,AboutUs.class);
 
     }
+    public void ClickSavings(View view){
+        MainActivity.redirectActivity( this,Savings.class);
+    }
     public void ClickSettings(View view){
         MainActivity.redirectActivity( this,Settings.class);
     }
