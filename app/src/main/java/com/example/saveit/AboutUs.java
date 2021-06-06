@@ -32,12 +32,15 @@ public class AboutUs extends AppCompatActivity {
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
     TextView tname,temail;
-    ImageView img1;
-    TextView title1,desc1,category1,done1;
     RecyclerView recyclerView;
 
-    String first_title, first_desc,first_category,first_done;
-    int first_img;
+    String title,desc,category,done;
+    int img,position;
+    String data1[]={""};
+    String data2[]={""};
+    String data3[]={""};
+    String data4[]={""};
+    int images[]={0};
 
 
     @Override
@@ -49,11 +52,6 @@ public class AboutUs extends AppCompatActivity {
         tname = findViewById(R.id.nav_name);
         temail = findViewById(R.id.nav_email);
 
-        img1=findViewById(R.id.img1);
-        title1=findViewById(R.id.title1);
-        desc1=findViewById(R.id.desc1);
-        category1=findViewById(R.id.category1);
-        done1=findViewById(R.id.done1);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getEmail();
@@ -96,35 +94,36 @@ public class AboutUs extends AppCompatActivity {
             li.setBackgroundResource(R.color.white);
         }
 
-        title1.setText(first_title);
-        desc1.setText(first_desc);
-        category1.setText(first_category);
-        done1.setText(first_done);
-        img1.setImageResource(first_img);
         getData();
         setData();
 
+        recyclerView = findViewById(R.id.recycler2);
+        MyRecycler myAdapter=new MyRecycler(this,data1,data2,data3,images,data4);
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
     public void getData(){
         if(getIntent().hasExtra("data1")){
-            first_title=getIntent().getStringExtra("data1");
-            first_desc=getIntent().getStringExtra("data2");
-            first_category=getIntent().getStringExtra("data3");
-            first_img=getIntent().getIntExtra("img",1);
-            first_done="Done";
+            title=getIntent().getStringExtra("data1");
+            desc=getIntent().getStringExtra("data2");
+            category=getIntent().getStringExtra("data3");
+            img=getIntent().getIntExtra("img",1);
+            position=getIntent().getIntExtra("position",0);
+            done="Done";
 
         }else{
             Toast.makeText(this,"No data",Toast.LENGTH_SHORT).show();
-            done1.setBackgroundResource(R.color.white);
         }
     }
 
     public void setData(){
-        title1.setText(first_title);
-        desc1.setText(first_desc);
-        category1.setText(first_category);
-        img1.setImageResource(first_img);
-        done1.setText(first_done);
+        data1[0]=title;
+        data2[0]=desc;
+        data3[0]=category;
+        images[0]=img;
+        data4[0]=done;
+
+
     }
 
     public void ClickMenu(View view){
