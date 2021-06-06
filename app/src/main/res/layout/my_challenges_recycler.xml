@@ -16,16 +16,16 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/bck"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="150dp">
 
             <TextView
-                android:id="@+id/done"
+                android:id="@+id/add"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_marginTop="30dp"
                 android:background="@color/grey"
                 android:gravity="center"
-                android:text="Done"
+                android:text="Add Challenge"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -60,7 +60,7 @@
 
             <TextView
                 android:id="@+id/title"
-                android:layout_width="300dp"
+                android:layout_width="280dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="10dp"
                 android:text="Title"
@@ -73,7 +73,7 @@
 
             <TextView
                 android:id="@+id/desc"
-                android:layout_width="300dp"
+                android:layout_width="280dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
                 android:text="Description"

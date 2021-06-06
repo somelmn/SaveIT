@@ -51,7 +51,13 @@ public class ChallangesRecyclerAdapter extends RecyclerView.Adapter<ChallangesRe
         holder.click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.myImage.setImageResource(R.drawable.circle_tick);
+                Toast.makeText(view.getContext(),"Challenge Added",Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(context,AboutUs.class);
+                intent.putExtra("data1",data1[position]);
+                intent.putExtra("data2", data2[position]);
+                intent.putExtra("data3", data3[position]);
+                intent.putExtra("img", img[position]);
+                context.startActivity(intent);
                 }
         });
 
@@ -72,7 +78,7 @@ public class ChallangesRecyclerAdapter extends RecyclerView.Adapter<ChallangesRe
             myText2=itemView.findViewById(R.id.desc);
             myText3=itemView.findViewById(R.id.category);
             myImage=itemView.findViewById(R.id.img);
-            click=itemView.findViewById(R.id.done);
+            click=itemView.findViewById(R.id.add);
 
         }
     }

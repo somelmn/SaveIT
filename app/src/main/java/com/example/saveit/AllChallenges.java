@@ -1,21 +1,16 @@
 package com.example.saveit;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,32 +23,27 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class AboutUs extends AppCompatActivity {
+public class AllChallenges extends AppCompatActivity {
+
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
     TextView tname,temail;
-    ImageView img1;
-    TextView title1,desc1,category1,done1;
     RecyclerView recyclerView;
-
-    String first_title, first_desc,first_category,first_done;
-    int first_img;
+    String challange_name[]={"Reduce Shower Time","Public Transportation"};
+    String challange_desc[]={"Reduce your shower time to 5 minutes to save 12.5 Gallons of Water","7 days"};
+    String category[]={"Water","Gas"};
+    String carbon[]={"12.5 Gallons of Water",""};
+    int img[]={R.drawable.water,R.drawable.gas2};
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_us);
+        setContentView(R.layout.activity_all_challenges);
         drawerLayout = findViewById(R.id.drawer_layout);
 
         tname = findViewById(R.id.nav_name);
         temail = findViewById(R.id.nav_email);
-
-        img1=findViewById(R.id.img1);
-        title1=findViewById(R.id.title1);
-        desc1=findViewById(R.id.desc1);
-        category1=findViewById(R.id.category1);
-        done1=findViewById(R.id.done1);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getEmail();
@@ -80,7 +70,6 @@ public class AboutUs extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Take me to Challenges Page", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                MainActivity.redirectActivity(AboutUs.this,AllChallenges.class);
             }
         });
 
@@ -96,36 +85,13 @@ public class AboutUs extends AppCompatActivity {
             li.setBackgroundResource(R.color.white);
         }
 
-        title1.setText(first_title);
-        desc1.setText(first_desc);
-        category1.setText(first_category);
-        done1.setText(first_done);
-        img1.setImageResource(first_img);
-        getData();
-        setData();
+        recyclerView = findViewById(R.id.recycler1);
+        ChallangesRecyclerAdapter myAdapter=new ChallangesRecyclerAdapter(this,challange_name,challange_desc,category,img);
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
-    public void getData(){
-        if(getIntent().hasExtra("data1")){
-            first_title=getIntent().getStringExtra("data1");
-            first_desc=getIntent().getStringExtra("data2");
-            first_category=getIntent().getStringExtra("data3");
-            first_img=getIntent().getIntExtra("img",1);
-            first_done="Done";
 
-        }else{
-            Toast.makeText(this,"No data",Toast.LENGTH_SHORT).show();
-            done1.setBackgroundResource(R.color.white);
-        }
-    }
-
-    public void setData(){
-        title1.setText(first_title);
-        desc1.setText(first_desc);
-        category1.setText(first_category);
-        img1.setImageResource(first_img);
-        done1.setText(first_done);
-    }
 
     public void ClickMenu(View view){
         MainActivity.openDrawer(drawerLayout);
