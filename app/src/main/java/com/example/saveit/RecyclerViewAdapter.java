@@ -60,7 +60,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View view) {
 
-
                 if(bill_type.equals("Electricity Bills")){
                     Toast.makeText(view.getContext(),data2[position],Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(context,BillClicked.class);

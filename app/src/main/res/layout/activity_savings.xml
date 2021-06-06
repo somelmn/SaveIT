@@ -17,7 +17,7 @@
 
         <com.github.mikephil.charting.charts.PieChart
             android:layout_width="match_parent"
-            android:layout_height="200dip"
+            android:layout_height="270dip"
             android:id="@+id/IdPieChart"
             android:layout_marginTop="60dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,7 @@
         <TableLayout
             android:id="@+id/table"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:background="#f1f1f1">
 
@@ -324,60 +324,64 @@
             android:layout_marginTop="30dp"
             android:layout_marginStart="20dp"
             android:text="You have saved : "
-            android:textSize="20sp"
-            android:textColor="@color/teal_200" />
+            android:fontFamily="@font/abhaya_libre"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorTextPrimary" />
         <TextView
             android:id="@+id/total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textSize="15sp"
+            android:textSize="20sp"
+            android:fontFamily="@font/abhaya_libre"
             android:textColor = "?android:textColorPrimary"
-            android:layout_marginLeft="180dp"
-            android:layout_marginTop="-23dp"/>
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="-28dp"/>
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/abhaya_libre"
             android:layout_marginStart="20dp"
             android:text="Your average : "
-            android:textSize="20sp"
-            android:textColor="@color/teal_200" />
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorTextPrimary" />
         <TextView
             android:id="@+id/average"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textSize="15sp"
+            android:fontFamily="@font/abhaya_libre"
+            android:textSize="20sp"
             android:textColor = "?android:textColorPrimary"
             android:layout_marginLeft="180dp"
-            android:layout_marginTop="-23dp"/>
+            android:layout_marginTop="-28dp"/>
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/abhaya_libre"
             android:layout_marginStart="20dp"
-            android:text="Set a goal for next month : "
-            android:textSize="20sp"
-            android:textColor="@color/teal_200" />
-
-        <EditText
-            android:id="@+id/goal"
+            android:text="Your goal for next month : "
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/colorTextPrimary" />
+        <TextView
+            android:id="@+id/yourgoal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="80dp"
-            android:hint="New Goal"
-            android:selectAllOnFocus="true" />
-        <Button
-            android:id="@+id/set"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="Set Goal"
-            android:layout_marginTop="-40dp"
-            android:layout_marginLeft="220dp"/>
+            android:text="TextView"
+            android:textSize="20sp"
+            android:fontFamily="@font/abhaya_libre"
+            android:textColor = "?android:textColorPrimary"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="-28dp"/>
+
+
 
 
     </LinearLayout>

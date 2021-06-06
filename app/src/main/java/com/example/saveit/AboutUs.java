@@ -32,9 +32,11 @@ public class AboutUs extends AppCompatActivity {
     MeowBottomNavigation bottomNavigation;
     TextView tname,temail;
     RecyclerView recyclerView;
-    String challange_name[]={"No Plastic Bottle Usage","Public Transportation"};
-    String challange_desc[]={"30 days","7 days"};
-    int img[]={R.drawable.circle,R.drawable.circle,R.drawable.circle,R.drawable.circle};
+    String challange_name[]={"Reduce Shower Time","Public Transportation"};
+    String challange_desc[]={"Reduce your shower time to 5 minutes to save 12.5 Gallons of Water","7 days"};
+    String category[]={"Water","Gas"};
+    String carbon[]={"12.5 Gallons of Water",""};
+    int img[]={R.drawable.water,R.drawable.gas2};
 
 
     @Override
@@ -87,7 +89,7 @@ public class AboutUs extends AppCompatActivity {
         }
 
         recyclerView = findViewById(R.id.recycler1);
-        ChallangesRecyclerAdapter myAdapter=new ChallangesRecyclerAdapter(this,challange_name,challange_desc,img);
+        ChallangesRecyclerAdapter myAdapter=new ChallangesRecyclerAdapter(this,challange_name,challange_desc,category,img);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
