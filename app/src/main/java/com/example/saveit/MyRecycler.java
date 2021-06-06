@@ -30,6 +30,7 @@ public class MyRecycler extends RecyclerView.Adapter<MyRecycler.MyViewHolder> {
         img=first_img;
         data4=first_done;
 
+
     }
     @NonNull
     @NotNull

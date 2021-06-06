@@ -36,11 +36,13 @@ public class AboutUs extends AppCompatActivity {
 
     String title,desc,category,done;
     int img,position;
-    String data1[]={""};
-    String data2[]={""};
-    String data3[]={""};
-    String data4[]={""};
-    int images[]={0};
+    String data1[]={"",""};
+    String data2[]={"",""};
+    String data3[]={"",""};
+    String data4[]={"",""};
+    int pos[]={0,0};
+    int images[]={0,0};
+    int c;
 
 
     @Override
@@ -51,6 +53,9 @@ public class AboutUs extends AppCompatActivity {
 
         tname = findViewById(R.id.nav_name);
         temail = findViewById(R.id.nav_email);
+
+        c=0;
+
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -101,7 +106,10 @@ public class AboutUs extends AppCompatActivity {
         MyRecycler myAdapter=new MyRecycler(this,data1,data2,data3,images,data4);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
     }
+
     public void getData(){
         if(getIntent().hasExtra("data1")){
             title=getIntent().getStringExtra("data1");
@@ -111,25 +119,45 @@ public class AboutUs extends AppCompatActivity {
             position=getIntent().getIntExtra("position",0);
             done="Done";
 
+            PreferenceManager.getDefaultSharedPreferences(this).edit()
+                    .putString("title", title).commit();
+            PreferenceManager.getDefaultSharedPreferences(this).edit()
+                    .putString("desc", desc).commit();
+            PreferenceManager.getDefaultSharedPreferences(this).edit()
+                    .putString("category", category).commit();
+            PreferenceManager.getDefaultSharedPreferences(this).edit()
+                    .putInt("img",img).commit();
+            PreferenceManager.getDefaultSharedPreferences(this).edit()
+                    .putString("done", done).commit();
+
         }else{
             Toast.makeText(this,"No data",Toast.LENGTH_SHORT).show();
         }
     }
 
     public void setData(){
-        data1[0]=title;
-        data2[0]=desc;
-        data3[0]=category;
-        images[0]=img;
-        data4[0]=done;
+        title = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString("title", "");
+        desc = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString("desc", "");
+        category = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString("category", "");
+        img = PreferenceManager.getDefaultSharedPreferences(this)
+                .getInt("img", 0);
+        done = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString("done", "");
 
-
+        data1[c]=title;
+        data2[c]=desc;
+        data3[c]=category;
+        images[c]=img;
+        data4[c]=done;
+        c++;
     }
 
     public void ClickMenu(View view){
         MainActivity.openDrawer(drawerLayout);
     }
-
     public void ClickLogo(View view){
         MainActivity.closeDrawer(drawerLayout);
     }
