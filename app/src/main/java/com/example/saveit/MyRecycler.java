@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class MyRecycler extends RecyclerView.Adapter<com.example.saveit.MyRecycl
             public TextView data2;
             public TextView data3;
             public TextView done;
+            public ConstraintLayout layout;
             public ExampleViewHolder(View itemView) {
                 super(itemView);
                 img1 = itemView.findViewById(R.id.img1);
@@ -26,6 +28,7 @@ public class MyRecycler extends RecyclerView.Adapter<com.example.saveit.MyRecycl
                 data2 = itemView.findViewById(R.id.desc1);
                 data3 = itemView.findViewById(R.id.category1);
                 done = itemView.findViewById(R.id.done1);
+                layout = itemView.findViewById(R.id.bck);
             }
         }
         public MyRecycler(ArrayList<ChallengeItem> exampleList) {
@@ -53,7 +56,6 @@ public class MyRecycler extends RecyclerView.Adapter<com.example.saveit.MyRecycl
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(view.getContext(),"Challenge Done",Toast.LENGTH_SHORT).show();
-
                 }
             });
         }

@@ -1,6 +1,9 @@
 package com.example.saveit;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -34,12 +37,14 @@ public class AboutUs extends AppCompatActivity {
     private ArrayList<ChallengeItem> MyChallengesList;
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
-    TextView tname,temail;
+    TextView tname,temail,title1;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     String title,desc,category,done;
     int img;
+
+
 
 
     @Override
@@ -50,9 +55,7 @@ public class AboutUs extends AppCompatActivity {
 
         tname = findViewById(R.id.nav_name);
         temail = findViewById(R.id.nav_email);
-
-        createExampleList();
-        buildRecyclerView();
+        title1 = findViewById(R.id.title1);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getEmail();
@@ -66,13 +69,30 @@ public class AboutUs extends AppCompatActivity {
 
                     String name = snapshot.child("fullName").getValue().toString();
                     tname.setText(name);
+                    title = snapshot.child("Item").getValue().toString();
+                    desc = snapshot.child("Description").getValue().toString();
+                    category = snapshot.child("Category").getValue().toString();
+                    String img1 =snapshot.child("Image").getValue().toString();
+                    img = Integer.parseInt(img1);
+
                 }
+
+                MyChallengesList = new ArrayList<>();
+                MyChallengesList.add(new ChallengeItem(img,title,desc,category));
+                recyclerView = findViewById(R.id.recycler2);
+                recyclerView.setHasFixedSize(true);
+                layoutManager = new LinearLayoutManager(AboutUs.this);
+                adapter = new MyRecycler(MyChallengesList);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,32 +115,9 @@ public class AboutUs extends AppCompatActivity {
             li.setBackgroundResource(R.color.white);
         }
 
-
     }
 
-    public void createExampleList() {
 
-        if(getIntent().hasExtra("title")){
-            title=getIntent().getStringExtra("title");
-            desc=getIntent().getStringExtra("desc");
-            category=getIntent().getStringExtra("category");
-            img=getIntent().getIntExtra("image",1);
-        }else{
-            Toast.makeText(this,"No data",Toast.LENGTH_SHORT).show();
-        }
-
-        MyChallengesList = new ArrayList<>();
-        MyChallengesList.add(new ChallengeItem(img, title, desc,category));
-
-    }
-    public void buildRecyclerView() {
-        recyclerView = findViewById(R.id.recycler2);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        adapter = new MyRecycler(MyChallengesList);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
-    }
 
 
     public void ClickMenu(View view){
@@ -153,6 +150,7 @@ public class AboutUs extends AppCompatActivity {
     protected void onPause(){
         super.onPause();
         MainActivity.closeDrawer(drawerLayout);
+
     }
 
 }

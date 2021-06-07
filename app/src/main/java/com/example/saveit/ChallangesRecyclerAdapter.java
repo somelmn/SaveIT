@@ -10,7 +10,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -53,12 +62,13 @@ import java.util.ArrayList;
                 public void onClick(View view) {
                     Toast.makeText(view.getContext(),"Challenge Added",Toast.LENGTH_SHORT).show();
 
-                    Intent intent=new Intent(view.getContext(),AboutUs.class);
-                    intent.putExtra("title",currentItem.getText1());
-                    intent.putExtra("desc", currentItem.getText2());
-                    intent.putExtra("category", currentItem.getText3());
-                    intent.putExtra("image", currentItem.getImageResource());
-                    view.getContext().startActivity(intent);
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    String uid = user.getEmail();
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+                    reference.child(user.getUid()).child("Item").setValue(currentItem.getText1());
+                    reference.child(user.getUid()).child("Description").setValue(currentItem.getText2());
+                    reference.child(user.getUid()).child("Category").setValue(currentItem.getText3());
+                    reference.child(user.getUid()).child("Image").setValue(currentItem.getImageResource());
 
                 }
             });
