@@ -1,7 +1,6 @@
 
 package com.example.saveit;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-    public class MyRecycler extends RecyclerView.Adapter<com.example.saveit.MyRecycler.ExampleViewHolder> {
+public class MyRecycler extends RecyclerView.Adapter<com.example.saveit.MyRecycler.ExampleViewHolder> {
         private ArrayList<ChallengeItem> ExampleList;
         public static class ExampleViewHolder extends RecyclerView.ViewHolder {
             public ImageView img1;
@@ -45,6 +44,10 @@ import java.util.ArrayList;
             holder.data1.setText(currentItem.getText1());
             holder.data2.setText(currentItem.getText2());
             holder.data3.setText(currentItem.getText3());
+
+            if(currentItem.getText1()==null){
+                holder.done.setBackgroundResource(R.color.white);
+            }
 
             holder.done.setOnClickListener(new View.OnClickListener() {
                 @Override
