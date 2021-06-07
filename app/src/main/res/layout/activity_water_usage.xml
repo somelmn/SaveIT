@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".WaterUsage">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,174 +41,184 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/type2"
-                android:layout_width="330dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/abhaya_libre"
-                android:gravity="center_vertical"
-                android:text="Real Usage"
-                android:textColor="@color/grey"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.253"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
 
-            <TextView
-                android:id="@+id/type3"
-                android:layout_width="330dp"
-                android:layout_height="40dp"
+                android:id="@+id/constraintLayout"
+                android:layout_width="379dp"
+                android:layout_height="205dp"
                 android:layout_marginTop="40dp"
-                android:fontFamily="@font/abhaya_libre"
-                android:gravity="center_vertical"
-                android:text="Estimated Usage"
-                android:textColor="@color/grey"
-                android:textSize="30sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.253"
+                app:layout_constraintHorizontal_bias="0.478"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/waterCost2" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/waterCost2"
-                android:layout_width="195dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="12dp"
-                android:gravity="center_vertical"
-                android:text="Cost: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/waterMonthlyTotal5" />
+                <TextView
+                    android:id="@+id/waterCost"
+                    android:layout_width="160dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Cost: "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#F44336"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/cost2"
+                    app:layout_constraintTop_toBottomOf="@+id/waterMonthlyTotal" />
 
-            <TextView
-                android:id="@+id/waterWeeklyTotal3"
-                android:layout_width="195dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center_vertical"
-                android:text="Weekly Total:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/type2" />
+                <TextView
+                    android:id="@+id/monthlyTotal5"
+                    android:layout_width="195dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:text="Monthly Total:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/weeklyTotal3" />
 
-            <TextView
-                android:id="@+id/waterWeeklyTotal"
-                android:layout_width="160dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:text="Weekly Total:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#4CAF50"
+                <TextView
+                    android:id="@+id/waterWeeklyTotal"
+                    android:layout_width="160dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Weekly Total:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#4CAF50"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/weeklyTotal3"
+                    app:layout_constraintTop_toBottomOf="@+id/type2" />
+
+                <TextView
+                    android:id="@+id/waterMonthlyTotal"
+                    android:layout_width="160dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Monthly Total:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#F44336"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/monthlyTotal5"
+                    app:layout_constraintTop_toBottomOf="@+id/waterWeeklyTotal" />
+
+                <TextView
+                    android:id="@+id/type2"
+                    android:layout_width="330dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/abhaya_libre"
+                    android:gravity="center_vertical"
+                    android:text="Real Usage"
+                    android:textColor="@color/grey"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/weeklyTotal3"
+                    android:layout_width="195dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:text="Weekly Total:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/type2" />
+
+                <TextView
+                    android:id="@+id/cost2"
+                    android:layout_width="195dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:text="Cost: "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/monthlyTotal5" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="379dp"
+                android:layout_height="155dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/waterWeeklyTotal3"
-                app:layout_constraintTop_toBottomOf="@+id/type2" />
-
-            <TextView
-                android:id="@+id/waterMonthlyTotal"
-                android:layout_width="160dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:text="Monthly Total:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#F44336"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/waterMonthlyTotal5"
-                app:layout_constraintTop_toBottomOf="@+id/waterWeeklyTotal" />
-
-            <TextView
-                android:id="@+id/waterCost"
-                android:layout_width="160dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:text="Cost: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#F44336"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/waterCost2"
-                app:layout_constraintTop_toBottomOf="@+id/waterMonthlyTotal" />
-
-            <TextView
-                android:id="@+id/waterEstimatedUsage2"
-                android:layout_width="195dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="20dp"
-                android:gravity="center_vertical"
-                android:text="Monthly Estimated: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintHorizontal_bias="0.481"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/type3" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                app:layout_constraintVertical_bias="0.504">
 
-            <TextView
-                android:id="@+id/waterEstimatedUsage"
-                android:layout_width="160dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:text="Monthly Estimated: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#4CAF50"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/waterEstimatedUsage2"
-                app:layout_constraintTop_toBottomOf="@+id/type3" />
+                <TextView
+                    android:id="@+id/type3"
+                    android:layout_width="330dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/abhaya_libre"
+                    android:gravity="center_vertical"
+                    android:text="Estimated Usage"
+                    android:textColor="@color/grey"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/waterEstimatedCost2"
-                android:layout_width="195dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="20dp"
-                android:gravity="center_vertical"
-                android:text="Estimated Cost: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/waterEstimatedUsage2" />
+                <TextView
+                    android:id="@+id/estimatedUsage2"
+                    android:layout_width="195dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:text="Monthly Estimated: "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/type3" />
 
-            <TextView
-                android:id="@+id/waterEstimatedCost"
-                android:layout_width="160dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:text="Estimated Cost: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#4CAF50"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/waterEstimatedCost2"
-                app:layout_constraintTop_toBottomOf="@+id/waterEstimatedUsage" />
+                <TextView
+                    android:id="@+id/waterEstimatedCost"
+                    android:layout_width="160dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Estimated Cost: "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#4CAF50"
+                    app:layout_constraintStart_toEndOf="@+id/estimatedCost2"
+                    app:layout_constraintTop_toBottomOf="@+id/waterEstimatedUsage" />
 
-            <TextView
-                android:id="@+id/waterMonthlyTotal5"
-                android:layout_width="195dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="12dp"
-                android:gravity="center_vertical"
-                android:text="Monthly Total:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/waterWeeklyTotal3" />
+                <TextView
+                    android:id="@+id/estimatedCost2"
+                    android:layout_width="195dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:text="Estimated Cost: "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/estimatedUsage2" />
 
-            <androidx.constraintlayout.widget.Barrier
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="top"
-                tools:layout_editor_absoluteX="178dp"
-                tools:layout_editor_absoluteY="207dp" />
+                <TextView
+                    android:id="@+id/waterEstimatedUsage"
+                    android:layout_width="160dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="Monthly Estimated: "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#4CAF50"
+                    app:layout_constraintStart_toEndOf="@+id/estimatedUsage2"
+                    app:layout_constraintTop_toBottomOf="@+id/type3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
