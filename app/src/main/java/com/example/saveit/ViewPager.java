@@ -66,17 +66,17 @@ public class ViewPager extends AppCompatActivity {
         List<Onboardingitem> onboardingitems = new ArrayList<>();
         Onboardingitem itemNote = new Onboardingitem();
         itemNote.setTitle("Help Save the Planet!");
-        itemNote.setDescription("Save money and energy and the planet!");
+        itemNote.setDescription("Small acts when multiplied by millions of people can transform the world.");
         itemNote.setImage(R.drawable.viewpager1);
 
         Onboardingitem itemOntheWay = new Onboardingitem();
         itemOntheWay.setTitle("Save Energy!");
-        itemOntheWay.setDescription("Our app will track you energy usage and help you cut down on your spendings!");
+        itemOntheWay.setDescription("Our app will track you energy usage and help you cut down on your spending's!");
         itemOntheWay.setImage(R.drawable.viewpager2);
 
         Onboardingitem itemSave = new Onboardingitem();
-        itemSave.setTitle("Pay online!");
-        itemSave.setDescription("Pay your bills online and keep track of them in one place.");
+        itemSave.setTitle("Challenge Yourself!");
+        itemSave.setDescription("Choose your challenges, check your progress, and track your energy consumption.");
         itemSave.setImage(R.drawable.viewpager3);
 
         onboardingitems.add(itemNote);

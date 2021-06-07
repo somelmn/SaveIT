@@ -23,18 +23,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class AllChallenges extends AppCompatActivity {
+import java.util.ArrayList;
 
+public class AllChallenges extends AppCompatActivity {
+    private ArrayList<ChallengeItem> ChallengeList;
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
     TextView tname,temail;
-    RecyclerView recyclerView;
-    String challange_name[]={"Reduce Shower Time","Public Transportation"};
-    String challange_desc[]={"Reduce your shower time to 5 minutes to save 12.5 Gallons of Water","7 days"};
-    String category[]={"Water","Gas"};
-    String carbon[]={"12.5 Gallons of Water",""};
-    int img[]={R.drawable.water,R.drawable.gas2};
-
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +42,9 @@ public class AllChallenges extends AppCompatActivity {
 
         tname = findViewById(R.id.nav_name);
         temail = findViewById(R.id.nav_email);
+
+        createExampleList();
+        buildRecyclerView();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getEmail();
@@ -85,11 +86,21 @@ public class AllChallenges extends AppCompatActivity {
             li.setBackgroundResource(R.color.white);
         }
 
-        recyclerView = findViewById(R.id.recycler1);
-        ChallangesRecyclerAdapter myAdapter=new ChallangesRecyclerAdapter(this,challange_name,challange_desc,category,img);
-        recyclerView.setAdapter(myAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
 
+    public void createExampleList() {
+        ChallengeList = new ArrayList<>();
+        ChallengeList.add(new ChallengeItem(R.drawable.water, "Reduce Shower Time", "Reduce your shower time to 5 minutes to save 12.5 Gallons of Water","Water"));
+        ChallengeList.add(new ChallengeItem(R.drawable.gas2, "Reduce Heater Time", "Reduce your heater time to 5 minutes to save Gas","Gas"));
+
+    }
+    public void buildRecyclerView() {
+        mRecyclerView = findViewById(R.id.recycler1);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new ChallangesRecyclerAdapter(ChallengeList);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
 

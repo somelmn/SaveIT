@@ -28,21 +28,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class AboutUs extends AppCompatActivity {
+    private ArrayList<ChallengeItem> MyChallengesList;
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
     TextView tname,temail;
-    RecyclerView recyclerView;
-
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
     String title,desc,category,done;
-    int img,position;
-    String data1[]={"",""};
-    String data2[]={"",""};
-    String data3[]={"",""};
-    String data4[]={"",""};
-    int pos[]={0,0};
-    int images[]={0,0};
-    int c;
+    int img;
 
 
     @Override
@@ -54,9 +51,8 @@ public class AboutUs extends AppCompatActivity {
         tname = findViewById(R.id.nav_name);
         temail = findViewById(R.id.nav_email);
 
-        c=0;
-
-
+        createExampleList();
+        buildRecyclerView();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getEmail();
@@ -99,61 +95,33 @@ public class AboutUs extends AppCompatActivity {
             li.setBackgroundResource(R.color.white);
         }
 
-        getData();
-        setData();
-
-        recyclerView = findViewById(R.id.recycler2);
-        MyRecycler myAdapter=new MyRecycler(this,data1,data2,data3,images,data4);
-        recyclerView.setAdapter(myAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
 
     }
 
-    public void getData(){
-        if(getIntent().hasExtra("data1")){
-            title=getIntent().getStringExtra("data1");
-            desc=getIntent().getStringExtra("data2");
-            category=getIntent().getStringExtra("data3");
-            img=getIntent().getIntExtra("img",1);
-            position=getIntent().getIntExtra("position",0);
-            done="Done";
+    public void createExampleList() {
 
-            PreferenceManager.getDefaultSharedPreferences(this).edit()
-                    .putString("title", title).commit();
-            PreferenceManager.getDefaultSharedPreferences(this).edit()
-                    .putString("desc", desc).commit();
-            PreferenceManager.getDefaultSharedPreferences(this).edit()
-                    .putString("category", category).commit();
-            PreferenceManager.getDefaultSharedPreferences(this).edit()
-                    .putInt("img",img).commit();
-            PreferenceManager.getDefaultSharedPreferences(this).edit()
-                    .putString("done", done).commit();
-
+        if(getIntent().hasExtra("title")){
+            title=getIntent().getStringExtra("title");
+            desc=getIntent().getStringExtra("desc");
+            category=getIntent().getStringExtra("category");
+            img=getIntent().getIntExtra("image",1);
         }else{
             Toast.makeText(this,"No data",Toast.LENGTH_SHORT).show();
         }
+
+        MyChallengesList = new ArrayList<>();
+        MyChallengesList.add(new ChallengeItem(img, title, desc,category));
+
+    }
+    public void buildRecyclerView() {
+        recyclerView = findViewById(R.id.recycler2);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        adapter = new MyRecycler(MyChallengesList);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
     }
 
-    public void setData(){
-        title = PreferenceManager.getDefaultSharedPreferences(this)
-                .getString("title", "");
-        desc = PreferenceManager.getDefaultSharedPreferences(this)
-                .getString("desc", "");
-        category = PreferenceManager.getDefaultSharedPreferences(this)
-                .getString("category", "");
-        img = PreferenceManager.getDefaultSharedPreferences(this)
-                .getInt("img", 0);
-        done = PreferenceManager.getDefaultSharedPreferences(this)
-                .getString("done", "");
-
-        data1[c]=title;
-        data2[c]=desc;
-        data3[c]=category;
-        images[c]=img;
-        data4[c]=done;
-        c++;
-    }
 
     public void ClickMenu(View view){
         MainActivity.openDrawer(drawerLayout);
