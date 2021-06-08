@@ -69,6 +69,7 @@ import java.util.ArrayList;
                     reference.child(user.getUid()).child("Description").setValue(currentItem.getText2());
                     reference.child(user.getUid()).child("Category").setValue(currentItem.getText3());
                     reference.child(user.getUid()).child("Image").setValue(currentItem.getImageResource());
+                    reference.child(user.getUid()).child("Done").setValue("Goal not reached yet.");
 
                 }
             });

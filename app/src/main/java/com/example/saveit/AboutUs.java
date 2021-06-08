@@ -37,11 +37,11 @@ public class AboutUs extends AppCompatActivity {
     private ArrayList<ChallengeItem> MyChallengesList;
     DrawerLayout drawerLayout;
     MeowBottomNavigation bottomNavigation;
-    TextView tname,temail,title1;
+    TextView tname,temail,title1,whendone;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String title,desc,category,done;
+    String title,desc,category,done,whendone1;
     int img;
 
 
@@ -56,6 +56,7 @@ public class AboutUs extends AppCompatActivity {
         tname = findViewById(R.id.nav_name);
         temail = findViewById(R.id.nav_email);
         title1 = findViewById(R.id.title1);
+        whendone =findViewById(R.id.whendone);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getEmail();
@@ -69,13 +70,17 @@ public class AboutUs extends AppCompatActivity {
 
                     String name = snapshot.child("fullName").getValue().toString();
                     tname.setText(name);
+                    if(snapshot.child("Item").exists()){
                     title = snapshot.child("Item").getValue().toString();
                     desc = snapshot.child("Description").getValue().toString();
                     category = snapshot.child("Category").getValue().toString();
+                    whendone1 = snapshot.child("Done").getValue().toString();
                     String img1 =snapshot.child("Image").getValue().toString();
-                    img = Integer.parseInt(img1);
+                    img = Integer.parseInt(img1); }
 
                 }
+
+                whendone.setText(whendone1);
 
                 MyChallengesList = new ArrayList<>();
                 MyChallengesList.add(new ChallengeItem(img,title,desc,category));
@@ -85,6 +90,7 @@ public class AboutUs extends AppCompatActivity {
                 adapter = new MyRecycler(MyChallengesList);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(adapter);
+
             }
 
             @Override
@@ -97,8 +103,6 @@ public class AboutUs extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Take me to Challenges Page", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
                 MainActivity.redirectActivity(AboutUs.this,AllChallenges.class);
             }
         });

@@ -11,6 +11,11 @@ import android.widget.Toast;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 public class MyRecycler extends RecyclerView.Adapter<com.example.saveit.MyRecycler.ExampleViewHolder> {
         private ArrayList<ChallengeItem> ExampleList;
@@ -56,6 +61,10 @@ public class MyRecycler extends RecyclerView.Adapter<com.example.saveit.MyRecycl
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(view.getContext(),"Challenge Done",Toast.LENGTH_SHORT).show();
+
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+                    reference.child(user.getUid()).child("Done").setValue("Congratulations on reaching your goal for the month!");
                 }
             });
         }
