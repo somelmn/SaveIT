@@ -25,11 +25,25 @@
             android:layout_marginLeft="100dp"
             android:textColor="@color/grey"
             android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="Challenge yourself by choosing this month's challenge."
+            android:fontFamily="@font/abhaya_libre"
+            android:textAlignment="center"
+            android:textColor="@color/teal_700"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/border"
-        android:layout_marginTop="310dp"
+        android:layout_marginTop="250dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:orientation="vertical"
@@ -50,7 +64,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler2"
             android:layout_width="match_parent"
-            android:layout_marginTop="230dp"
+            android:layout_marginTop="270dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="300dp"
