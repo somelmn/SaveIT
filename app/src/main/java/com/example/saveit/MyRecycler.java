@@ -31,7 +31,7 @@ public class MyRecycler extends RecyclerView.Adapter<com.example.saveit.MyRecycl
                 img1 = itemView.findViewById(R.id.img1);
                 data1 = itemView.findViewById(R.id.title1);
                 data2 = itemView.findViewById(R.id.desc1);
-                data3 = itemView.findViewById(R.id.category1);
+                data3 = itemView.findViewById(R.id.savings1);
                 done = itemView.findViewById(R.id.done1);
                 layout = itemView.findViewById(R.id.bck);
             }

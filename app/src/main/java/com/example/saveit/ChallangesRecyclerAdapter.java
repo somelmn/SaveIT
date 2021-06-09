@@ -36,7 +36,7 @@ import java.util.ArrayList;
                 mImageView = itemView.findViewById(R.id.img);
                 mTextView1 = itemView.findViewById(R.id.title);
                 mTextView2 = itemView.findViewById(R.id.desc);
-                mTextView3 = itemView.findViewById(R.id.category);
+                mTextView3 = itemView.findViewById(R.id.savings);
                 click = itemView.findViewById(R.id.add);
             }
         }
@@ -67,7 +67,7 @@ import java.util.ArrayList;
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
                     reference.child(user.getUid()).child("Item").setValue(currentItem.getText1());
                     reference.child(user.getUid()).child("Description").setValue(currentItem.getText2());
-                    reference.child(user.getUid()).child("Category").setValue(currentItem.getText3());
+                    reference.child(user.getUid()).child("Savings").setValue(currentItem.getText3());
                     reference.child(user.getUid()).child("Image").setValue(currentItem.getImageResource());
                     reference.child(user.getUid()).child("Done").setValue("Goal not reached yet.");
 

@@ -41,7 +41,7 @@ public class AboutUs extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String title,desc,category,done,whendone1;
+    String title,desc,savings,done,whendone1;
     int img;
 
 
@@ -73,7 +73,7 @@ public class AboutUs extends AppCompatActivity {
                     if(snapshot.child("Item").exists()){
                     title = snapshot.child("Item").getValue().toString();
                     desc = snapshot.child("Description").getValue().toString();
-                    category = snapshot.child("Category").getValue().toString();
+                    savings = snapshot.child("Savings").getValue().toString();
                     whendone1 = snapshot.child("Done").getValue().toString();
                     String img1 =snapshot.child("Image").getValue().toString();
                     img = Integer.parseInt(img1); }
@@ -83,7 +83,7 @@ public class AboutUs extends AppCompatActivity {
                 whendone.setText(whendone1);
 
                 MyChallengesList = new ArrayList<>();
-                MyChallengesList.add(new ChallengeItem(img,title,desc,category));
+                MyChallengesList.add(new ChallengeItem(img,title,desc,savings));
                 recyclerView = findViewById(R.id.recycler2);
                 recyclerView.setHasFixedSize(true);
                 layoutManager = new LinearLayoutManager(AboutUs.this);

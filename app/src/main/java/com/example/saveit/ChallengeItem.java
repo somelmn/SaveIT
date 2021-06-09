@@ -4,12 +4,12 @@ public class ChallengeItem {
     private int image;
     private String title;
     private String desc;
-    private String category;
+    private String savings;
     public ChallengeItem(int img, String text1, String text2, String text3) {
         image = img;
         title = text1;
         desc = text2;
-        category = text3;
+        savings = text3;
     }
     public int getImageResource() {
         return image;
@@ -21,6 +21,6 @@ public class ChallengeItem {
         return desc;
     }
     public String getText3() {
-        return category;
+        return savings;
     }
 }

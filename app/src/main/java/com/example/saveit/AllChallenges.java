@@ -83,8 +83,23 @@ public class AllChallenges extends AppCompatActivity {
 
     public void createExampleList() {
         ChallengeList = new ArrayList<>();
-        ChallengeList.add(new ChallengeItem(R.drawable.water, "Reduce Shower Time", "Reduce your shower time to 5 minutes to save 12.5 Gallons of Water","Water"));
-        ChallengeList.add(new ChallengeItem(R.drawable.gas2, "Reduce Heater Time", "Reduce your heater time to 5 minutes to save Gas","Gas"));
+        ChallengeList.add(new ChallengeItem(R.drawable.water, "Reduce Shower Time", "Reduce your shower time to 5 minutes to save 12.5 Gallons of Water","50 Liters"));
+        ChallengeList.add(new ChallengeItem(R.drawable.tree, "Recycle Plastic Bottles", "Recycle at least 6 plastic bottles","100 gr Carbon"));
+        ChallengeList.add(new ChallengeItem(R.drawable.tree, "Turn Down the Heater", "Reduce your heater degree at least 13 degrees for 6 months to save Gas","1.5 kg Carbon"));
+        ChallengeList.add(new ChallengeItem(R.drawable.electricity, "Turn off Unnecessary Lights", "Turn off unnecessary lights for 2 hours everyday to save Electricity","2250 Watts"));
+        ChallengeList.add(new ChallengeItem(R.drawable.water, "Plan Watering Time", "Water your plants during low light times (before 10 a.m or after 6 p.m","40 Liters"));
+        ChallengeList.add(new ChallengeItem(R.drawable.tree, "Take the Stairs", "Take the stairs instead of elevators","200 gr Carbon"));
+        ChallengeList.add(new ChallengeItem(R.drawable.tree, "Efficient Light Bulbs", "Use incandescent light bulbs e.g. CFL Bulbs","500 gr Carbon"));
+        ChallengeList.add(new ChallengeItem(R.drawable.water, "Fix that Leak", "A faucet leaking 60 drops/minute wastes 25 liters/day","25 Liters"));
+        ChallengeList.add(new ChallengeItem(R.drawable.tree, "Unplug Chargers", "Unplug unnecessary chargers","100 gr Carbon"));
+        ChallengeList.add(new ChallengeItem(R.drawable.water, "Let the Dishwasher Do the Work", "Avoid driving for at least 30 km","40 Liters"));
+        ChallengeList.add(new ChallengeItem(R.drawable.tree, "Reduce Television Time", "Reduce TV usage by 8 hours","200 gr Carbon"));
+        ChallengeList.add(new ChallengeItem(R.drawable.tree, "Recycle Glass Bottles", "Recycle at least 6 glass bottles","2 kg Carbon"));
+        ChallengeList.add(new ChallengeItem(R.drawable.water, "Defrost Smartly", "Defrost with the microwave or in the fridge overnight to avoid running you water a long time","25 Liters"));
+        ChallengeList.add(new ChallengeItem(R.drawable.tree, "Recycle Aluminum Cans", "Recycle at least 6 aluminum cans","60 gr Carbon"));
+        ChallengeList.add(new ChallengeItem(R.drawable.water, "Fix that Leak", "A faucet leaking 60 drops/minute wastes 25 liters/day","25 Liters"));
+        ChallengeList.add(new ChallengeItem(R.drawable.tree, "Stop Plastic Bag Usage", "Bring your own bag to the grocery store","100 gr Carbon"));
+        ChallengeList.add(new ChallengeItem(R.drawable.tree, "Avoid Driving", "Avoid driving for at least 30 km","3 kg Carbon"));
 
     }
     public void buildRecyclerView() {
